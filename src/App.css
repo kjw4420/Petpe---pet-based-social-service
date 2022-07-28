@@ -17,6 +17,12 @@ input{
 .fontgray, ::placeholder{
   color:#737373;
 }
+.font_deep_brown{
+  color: #A68762;
+}
+.bold{
+  font-weight: 500;
+}
 
 button {
   border: none;
@@ -36,7 +42,6 @@ form{
 .login_Wrapper {
   min-width: 32px;
   width: 100%;
-  height: 100%;
   /* border: 1px solid #333; */
   padding: 20px;
 }
@@ -61,8 +66,10 @@ form{
   width: 100%;
   min-width: 300px;
   max-width: 330px;
+  height: 30px;
   margin: 10px 0;
   color: #F62215;
+  margin-bottom: 100px;
 }
 #keepLoginLabel{
   margin-left: 5px;
@@ -75,4 +82,12 @@ form{
 }
 #keepLoginOption{
   float: left;
+}
+#registerOptionWrap{
+  float: right;
+  cursor: pointer;
+}
+#findUserID{
+  margin-right: 17px;
+  cursor: pointer;
 }
