@@ -10,8 +10,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-
-
         <Routes>
           <Route exact path="/" element={<Story />} />
           <Route exact path="/login" element={<Login />} />

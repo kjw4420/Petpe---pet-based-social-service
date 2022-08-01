@@ -1,8 +1,8 @@
 import "./Login.css";
 import React, { useState } from "react";
 import Container from "../components/container";
-import {Link } from "react-router-dom";
-import ButtonLarge from "../components/button_large";
+import { Link } from "react-router-dom";
+import ButtonLarge from "../components/globalComponent";
 
 function Login() {
   // 없어도되는 state
@@ -14,6 +14,7 @@ function Login() {
 
   let [idValue, setIdInput] = useState(false);
   let [pwValue, setPwInput] = useState(false);
+  
 
   // 이미 밑에 유효성검사 만들었으니 그거 사용
   //   const ActiveIsPassedLogin=()=>{
@@ -57,6 +58,7 @@ function Login() {
   };
 
   return (
+    <Container>
       <div className="login_Wrapper">
         <header>
           <Link to={"/"}>
@@ -124,7 +126,6 @@ function Login() {
             >
               로그인
             </button> */}
-            
           <Link to="/">
             <ButtonLarge
               as="button"
@@ -133,9 +134,11 @@ function Login() {
             >
               로그인
             </ButtonLarge>
+
           </Link>
         </form>
       </div>
+      </Container>
   );
 }
 
