@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Container from "../components/container";
 import { Link } from "react-router-dom";
+import { StoryWrapper, UserProfile } from "../components/globalComponent";
 
 const Story=()=>{
-
   return(
-    <h1>story</h1>
     
   )
 };
