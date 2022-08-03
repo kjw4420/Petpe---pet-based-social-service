@@ -35,11 +35,9 @@ const StoryEle = () => {
 const Story = () => {
   return (
     <>
-      <Container>
-        <StoryEle />
-        <StoryEle />
-        <StoryEle />
-      </Container>
+      <StoryEle />
+      <StoryEle />
+      <StoryEle />
     </>
   );
 };

@@ -9,6 +9,7 @@ import Profile from "./pages/profile";
 function App() {
   return (
     <>
+    <header>헤더임</header>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Story />} />
