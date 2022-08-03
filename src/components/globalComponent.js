@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from "styled-components";
 
 // 버튼컴포넌트
@@ -29,18 +30,14 @@ const ButtonLarge = styled.div`
 // ---------스토리컴포넌트
 export const StoryWrapper = () => {
   return (
-    <UserProfile
-      userName={"댕댕이"}
-      petName={"댕댕이"}
-      imgURL={""}
-    >
-    </UserProfile>
+  <section className="storyWrapper">
+  </section>
   );
 };
 
 export const UserProfile = (userName, petName, imgURL) => {
   <UserProfileWrapper>
-    <img src="#" alt="더미이미지" />
+    <img src={imgURL} alt="더미이미지" />
     <p>{userName}</p>
     <span className="h5">{petName}</span>
   </UserProfileWrapper>;

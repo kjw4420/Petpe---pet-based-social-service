@@ -113,20 +113,8 @@ function Login() {
           </div>
           <div id="errorAlerter"></div>
 
-
-            {/* <button
-              type="submit"
-              className={idValue && pwValue ? "activeLoginBtn" : "loginBtn"}
-              // className="lg-button"
-              // disabled={idValue === '' || pwValue === '' ? true : false}
-
-              // !를 붙히면 값을 반대로 뒤집어주고 ||연산자 사용시, false인 값을 반환함
-              // 삼항연산자의 결과가 결국 true , false니까 한번더 안뱉어줘도됨
-              disabled={!idValue || !pwValue}
-            >
-              로그인
-            </button> */}
-          <Link to="/">
+          {/* 조건부 링크 */}
+          <Link to={idValue && pwValue ? "/" : "#" }>
             <ButtonLarge
               as="button"
               type="submit"
