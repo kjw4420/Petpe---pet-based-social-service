@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Socialing = () => {
   return (
+    
     <Container>
       <h1>social</h1>
     </Container>
