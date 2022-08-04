@@ -1,3 +1,33 @@
+/* 라디오 네비 */
+.radioNav{
+  width: 100%;
+  max-width: 470px;
+  min-width: 330px;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.radioNav>a{
+  height: 100%;
+  }
+
+.radioNavButton{
+  float: left;
+  margin: 0 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.selected{
+  color: #A68762;
+  font-weight: 600;
+  border-bottom: 2px solid #A68762;
+  height: 100%;
+}
+
+/*  */
 .storyWrapper{
   width: 100%;
   max-width: 470px;
@@ -22,7 +52,6 @@
 }
 .storyInteractionWrapper{
   width: 100%;
-
   border-width: 1px 0px;
   border-style: solid;
   border-color: #F2F2F2;
@@ -60,3 +89,5 @@
   margin-right: 20px;
   border-radius: 100%;
 }
+
+
