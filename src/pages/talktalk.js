@@ -8,7 +8,7 @@ const TalkTalk = () => {
   return (
     <Container>
       <h1>talktalk</h1>
-      <ButtonLarge>안녕!</ButtonLarge>
+
     </Container>
   );
 };
