@@ -41,69 +41,69 @@ export const StoryEle = () => {
   );
 };
 
-// const RadioNavigater = () => {
-//   const [navLocation, setNavLocation] = useState("NavBtnStory");
+const RadioNavigater = () => {
+  const [navLocation, setNavLocation] = useState("NavBtnStory");
 
-//   return (
-//     <nav className="radioNav">
-//       <Link to="/">
-//         <div
-//           className={
-//             navLocation === "NavBtnStory"
-//               ? "radioNavButton selected"
-//               : "radioNavButton"
-//           }
-//           onClick={()=>{
-//             setNavLocation("NavBtnStory")
-//           }}
-//         >
-//           스토리
-//         </div>
-//       </Link>
-//       <Link to="/social">
-//         <div
-//           className={
-//             navLocation === "NavBtnSocial"
-//               ? "radioNavButton selected"
-//               : "radioNavButton"
-//           }
-//           onClick={()=>{
-//             setNavLocation("NavBtnSocial")
-//           }}
-//         >
-//           소셜링
-//         </div>
-//       </Link>
-//       <Link to="/place">
-//         <div
-//           className={
-//             navLocation === "NavBtnPlace"
-//               ? "radioNavButton selected"
-//               : "radioNavButton"
-//           }
-//           onClick={()=>{
-//             setNavLocation("NavBtnPlace")
-//           }}
-//         >
-//           플레이스
-//         </div>
-//       </Link>
-//       <Link to="/talktalk">
-//         <div
-//           className={
-//             navLocation === "NavBtnTalkTalk"
-//               ? "radioNavButton selected"
-//               : "radioNavButton"
-//           }
-//           onClick={()=>{
-//             setNavLocation("NavBtnTalkTalk")
-//           }}
-//         >
-//           반려톡톡
-//         </div>
-//       </Link>
-//     </nav>
-//   );
-// };
+  return (
+    <nav className="radioNav">
+      <Link to="/">
+        <div
+          className={
+            navLocation === "NavBtnStory"
+              ? "radioNavButton selected"
+              : "radioNavButton"
+          }
+          onClick={()=>{
+            setNavLocation("NavBtnStory")
+          }}
+        >
+          스토리
+        </div>
+      </Link>
+      <Link to="/social">
+        <div
+          className={
+            navLocation === "NavBtnSocial"
+              ? "radioNavButton selected"
+              : "radioNavButton"
+          }
+          onClick={()=>{
+            setNavLocation("NavBtnSocial")
+          }}
+        >
+          소셜링
+        </div>
+      </Link>
+      <Link to="/place">
+        <div
+          className={
+            navLocation === "NavBtnPlace"
+              ? "radioNavButton selected"
+              : "radioNavButton"
+          }
+          onClick={()=>{
+            setNavLocation("NavBtnPlace")
+          }}
+        >
+          플레이스
+        </div>
+      </Link>
+      <Link to="/talktalk">
+        <div
+          className={
+            navLocation === "NavBtnTalkTalk"
+              ? "radioNavButton selected"
+              : "radioNavButton"
+          }
+          onClick={()=>{
+            setNavLocation("NavBtnTalkTalk")
+          }}
+        >
+          반려톡톡
+        </div>
+      </Link>
+    </nav>
+  );
+};
 
 export default Story;
