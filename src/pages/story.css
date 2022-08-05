@@ -21,9 +21,9 @@
 }
 
 a.active>div{
-  color: #A68762;
+  color: var(--main-deep-brown);
   font-weight: 600;
-  border-bottom: 2px solid #A68762;
+  border-bottom: 2px solid var(--main-deep-brown);
   height: 100%;
 }
 
@@ -34,7 +34,7 @@ a.active>div{
   min-width: 330px;
   border-width: 1px 0px;
   border-style: solid;
-  border-color: #F2F2F2;
+  border-color: var(--line-gray);
   margin: 0 auto;
 }
 .userProfileWrapper{
@@ -48,13 +48,13 @@ a.active>div{
   display: block;
   width: 100%;
   max-width: 470px;
-  background-color: #f2f2f2;
+  background-color: var(--line-gray);
 }
 .storyInteractionWrapper{
   width: 100%;
   border-width: 1px 0px;
   border-style: solid;
-  border-color: #F2F2F2;
+  border-color: var(--line-gray);
   display: flex;
   align-items: center;
   padding: 10px 20px;
@@ -80,7 +80,7 @@ a.active>div{
   height: 40px;
   display: block;
   border-radius: 100%;
-  border: 2px solid #f2f2f2;
+  border: 2px solid var(--line-gray);
   margin-right: 16px;
 }
 .icon{

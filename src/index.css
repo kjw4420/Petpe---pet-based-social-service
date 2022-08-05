@@ -7,11 +7,25 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
-  color: #333333;
+  color: var(--font-black);
   font-size: 1rem;
   font-weight: 400;
 }
-
+:root{
+  --main-deep-brown: #a68762;
+  --main-brown:#F2D0A6;
+  --main-light-brown:#FFE7C9;
+  --sub-deep-blue : #518AA6;
+  --sub-light-blue : #A7DAF2;
+  --font-black: #333333;
+  --font-gray: #737373;
+  --font-light-gray : #a5a5a5;
+  --background-brown : #FFF9F2;
+  --background-gray : #f8f8f8;
+  --background-white : #FFFFFF;
+  --alert-red: #F62215;
+  --line-gray: #f2f2f2;
+}
 body {
   min-height: 100vh;
 }
@@ -20,16 +34,16 @@ input {
   border: none;
 }
 .skeleton {
-  background-color: #737373;
+  background-color: var(--font-gray);
 }
 
 /* 컬러시스템 */
-.fontgray,
+.fontgray, 
 ::placeholder {
-  color: #737373;
+  color: var(--font-gray)
 }
 .font_deep_brown {
-  color: #a68762;
+  color: var(--main-deep-brown);
 }
 
 /* 타입시스템 */
