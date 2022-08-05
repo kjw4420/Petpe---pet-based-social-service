@@ -45,6 +45,7 @@ input {
 .font_deep_brown {
   color: var(--main-deep-brown);
 }
+.fot
 
 /* 타입시스템 */
 .bold {
@@ -66,6 +67,7 @@ input {
 .h1 {
   font-size: 1.8rem;
 }
+
 
 /* css 초기화 */
 button {
