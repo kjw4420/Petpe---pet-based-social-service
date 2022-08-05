@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import Login from "./pages/Login";
 import Story from "./pages/Story";
 import Socialing from "./pages/socialing";
@@ -24,74 +24,20 @@ function App() {
 }
 
 const RadioNavigater = () => {
-  const [navLocation, setNavLocation] = useState("NavBtnStory");
-
   return (
     <nav className="radioNav">
-      <Link
-        to="/"
-        onClick={() => {
-          setNavLocation("NavBtnStory");
-        }}
-      >
-        <div
-          className={
-            navLocation === "NavBtnStory"
-              ? "radioNavButton selected"
-              : "radioNavButton"
-          }
-        >
-          스토리
-        </div>
-      </Link>
-      <Link
-        to="/social"
-        onClick={() => {
-          setNavLocation("NavBtnSocial");
-        }}
-      >
-        <div
-          className={
-            navLocation === "NavBtnSocial"
-              ? "radioNavButton selected"
-              : "radioNavButton"
-          }
-        >
-          소셜링
-        </div>
-      </Link>
-      <Link
-        to="/place"
-        onClick={() => {
-          setNavLocation("NavBtnPlace");
-        }}
-      >
-        <div
-          className={
-            navLocation === "NavBtnPlace"
-              ? "radioNavButton selected"
-              : "radioNavButton"
-          }
-        >
-          플레이스
-        </div>
-      </Link>
-      <Link
-        to="/talktalk"
-        onClick={() => {
-          setNavLocation("NavBtnTalkTalk");
-        }}
-      >
-        <div
-          className={
-            navLocation === "NavBtnTalkTalk"
-              ? "radioNavButton selected"
-              : "radioNavButton"
-          }
-        >
-          반려톡톡
-        </div>
-      </Link>
+      <NavLink to="/">
+        <div className="radioNavButton">스토리</div>
+      </NavLink>
+      <NavLink to="/social">
+        <div className="radioNavButton">소셜링</div>
+      </NavLink>
+      <NavLink to="/place">
+        <div className="radioNavButton">플레이스</div>
+      </NavLink>
+      <NavLink to="/talktalk">
+        <div className="radioNavButton">반려톡톡</div>
+      </NavLink>
     </nav>
   );
 };

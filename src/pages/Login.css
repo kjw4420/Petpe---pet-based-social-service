@@ -34,13 +34,14 @@
 
 .input_wrapper input{
   width: 100%;
+  min-width: 300px;
 }
 
 #errorAlerter{
   width: 100%;
   min-width: 300px;
   max-width: 330px;
-  height: 30px;
+  min-height: 30px;
   margin: 10px 0;
   color: #F62215;
   margin-bottom: 70px;

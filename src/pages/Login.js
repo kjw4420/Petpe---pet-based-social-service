@@ -5,23 +5,10 @@ import { Link } from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
 
 function Login() {
-  // 없어도되는 state
-  // let[active,setActive]=useState(false);
-
-  // 빈문자열 ㄴㄴ 불리언사용
-  // let[idValue,setIdInput]=useState('');
-  // let[pwValue,setpwInput]=useState('');
 
   let [idValue, setIdInput] = useState(false);
   let [pwValue, setPwInput] = useState(false);
   
-
-  // 이미 밑에 유효성검사 만들었으니 그거 사용
-  //   const ActiveIsPassedLogin=()=>{
-  //   return idValue.includes('@')&&pwValue.length>=8
-  //   ?setActive(true)
-  //   :setActive(false);
-  // }
 
   // 유효성검사함수
   const handleId = (e) => {
@@ -50,7 +37,7 @@ function Login() {
       setPwInput(true);
     } else {
       document.getElementById("errorAlerter").textContent =
-        "비밀번호를 확인해주세요(특수문자, 숫자,영어만 사용가능)";
+        "8자리 이상의 영문, 숫자, 특수문자";
 
       //비번이 틀릴시, pw검사 state를 false로
       setPwInput(false);
@@ -76,8 +63,7 @@ function Login() {
               id="email"
               placeholder="이메일주소를 입력해 주세요"
               onChange={handleId}
-              // 핸들러 하나로 통합
-              // onKeyUp={ActiveIsPassedLogin}
+
             />
           </div>
           <div className="input_wrapper">
@@ -87,8 +73,7 @@ function Login() {
               id="password"
               placeholder="비밀번호를 입력해주세요"
               onChange={handlePw}
-              // 핸들러 하나로 통합
-              // onKeyUp={ActiveIsPassedLogin}
+
             />
           </div>
           <div className="LoginOptionWrap">

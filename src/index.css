@@ -1,41 +1,59 @@
 /* 전역 CSS파일 */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,500;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,500;1,900&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #333333;
-  font-size: 
-  1rem;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-body{
+body {
   min-height: 100vh;
 }
-input{
+input {
   outline: none;
   border: none;
 }
-.skeleton{
+.skeleton {
   background-color: #737373;
 }
-.fontgray, ::placeholder{
-  color:#737373;
+
+/* 컬러시스템 */
+.fontgray,
+::placeholder {
+  color: #737373;
 }
-.font_deep_brown{
-  color: #A68762;
+.font_deep_brown {
+  color: #a68762;
 }
-.bold{
+
+/* 타입시스템 */
+.bold {
   font-weight: 500;
 }
 
-.h5{
-  font-size: 12px;
-  font-weight: 400;
+.h5 {
+  font-size: 0.8rem;
 }
+.h4 {
+  font-size: 1.2rem;
+}
+.h3 {
+  font-size: 1.4rem;
+}
+.h2 {
+  font-size: 1.6rem;
+}
+.h1 {
+  font-size: 1.8rem;
+}
+
+/* css 초기화 */
 button {
   border: none;
 }
@@ -44,7 +62,7 @@ h1 {
   margin: 20px auto;
   width: 155px;
 }
-form{
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
