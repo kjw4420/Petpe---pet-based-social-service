@@ -1,0 +1,94 @@
+.header{
+    display: flex;
+    justify-content: center;
+}
+.social_wrapper{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+}
+.social_title_back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+}
+.social_title_back>img{
+    width:20px;
+}
+
+.social_header{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    height: 70px;
+    border-bottom: 1px solid var(--line-gray);
+}
+
+.social_title_add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+}
+.social_title_add>img{
+    width: 32px;
+}
+
+.search_box{
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.search_box>input{
+    width: 100%;
+    margin: 10px 0;
+    min-height: 42px;
+    padding: 10px 20px;
+}
+.search{
+    
+    border-radius: 5px;
+    background-color: var(--background-gray);
+    width: 330px;
+    height:34px;
+    padding: 20px;
+}
+.category{
+    height: 20px;
+    margin-bottom: 10px;
+
+}
+.social_box{
+    margin: 0 auto;
+}
+.social_chatting{
+    border: 1px solid var(--line-gray);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    display: flex;
+    margin: 5px 0;
+}
+.chatting_title{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatting_profile{
+    border-radius: 5px;
+}
