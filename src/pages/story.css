@@ -27,8 +27,19 @@ a.active>div{
   height: 100%;
 }
 
+
+
 /* 스토리앨리먼트 */
 .storyWrapper{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 470px;
+  min-width: 330px;
+  border: 1px solid var(--line-gray);
+}
+
+
+.story{
   width: 100%;
   max-width: 470px;
   min-width: 330px;
@@ -90,5 +101,4 @@ a.active>div{
   border-radius: 100%;
   cursor: pointer;
 }
-
 

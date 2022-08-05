@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
 import axios from "../../node_modules/axios/index";
+import { Link } from 'react-router-dom';
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
   const [story, setStory] = useState([]);
   useEffect(() => {
-    axios.get("http://3.39.181.250/story").then((response) => {
+    axios.get("http://3.39.181.250/story")
+    .then((response) => {
       setStory(response.data);
     });
   }, []);
+
   // 새로고침용 함수
   const updateStories = () => {
     axios.get("http://3.39.181.250/story").then((response) => {
@@ -19,9 +22,10 @@ const Story = () => {
 
   return (
     <>
+    <section className="storyWrapper">
       {story.map((props) => {
         return (
-          <div className="storyWrapper" key={props.id}>
+          <div className="story" key={props.id}>
             <div className="userProfileWrapper">
               <div className="userProfile-sm">
                 <img
@@ -72,8 +76,10 @@ const Story = () => {
           </div>
         );
       })}
+      </section>
     </>
   );
 };
+
 
 export default Story;
