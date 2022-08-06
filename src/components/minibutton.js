@@ -10,6 +10,7 @@ cursor: pointer;
 border: 1px solid var(--font-gray);
 float: left;
 margin-right: 5px;
+
 &.active{
   color: var(--background-white);
   background-color: var(--main-deep-brown);
