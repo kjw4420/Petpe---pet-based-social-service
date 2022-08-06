@@ -27,26 +27,10 @@ const Socialing=()=>{
       <input type="text" className="search" placeholder=" 검색" />
       </div>
       <div className="category">
-        <MiniButton
-        as="button"
-        onClick={()=>setminiselect(!miniselect)}
-        className={miniselect?"":"active"}
-        >전체</MiniButton>
-        <MiniButton
-        as="button"
-        onClick={()=>setminiselect(!miniselect)}
-        className={miniselect?"":"active"}
-        >레스토랑</MiniButton>
-        <MiniButton
-        as="button"
-        onClick={()=>setminiselect(!miniselect)}
-        className={miniselect?"":"active"}
-        >카페</MiniButton>
-        <MiniButton
-        as="button"
-        onClick={()=>setminiselect(!miniselect)}
-        className={miniselect?"":"active"}
-        >호텔</MiniButton>
+        <MiniButton className="active">전체보기</MiniButton>
+        <MiniButton>레스토랑</MiniButton>
+        <MiniButton>카페</MiniButton>
+        <MiniButton>호텔</MiniButton>
       </div>
       <Socialing_chat/>
       <Socialing_chat/>
