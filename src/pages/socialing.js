@@ -7,7 +7,6 @@ const Socialing = () => {
   return (
     <>
       <div className="social_wrapper">
-        <Header></Header>
         <div className="search_box">
           <input type="text" className="search" placeholder=" 검색" />
         </div>
