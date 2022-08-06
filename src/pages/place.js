@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MiniButton from "../components/minibutton";
 import "./Place.css";
-import { RadioNavigater } from './../App';
 
 
 const Place = () => {

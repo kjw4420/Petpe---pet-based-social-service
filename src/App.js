@@ -5,13 +5,14 @@ import Story from "./pages/Story";
 import Socialing from "./pages/socialing";
 import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
-import Place from "./pages/place"
+import Place from "./pages/place";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <RadioNavigater></RadioNavigater>
+        <Header></Header>
+        <RadioNavigater></RadioNavigater>
         <Routes>
           <Route exact path="/" element={<Story />} />
           <Route exact path="/login" element={<Login />} />
@@ -25,6 +26,21 @@ function App() {
   );
 }
 
+export const Header = () => {
+  return (
+    <div className="header">
+      <div className="social_header">
+        <div className="social_title_back">
+          <img src="./img/back.png" alt="뒤로가기"></img>
+        </div>
+        <span className="social_title h3 bold">소셜링</span>
+        <div className="social_title_add">
+          <img src="./img/plus.png" alt="소셜링 열기"></img>
+        </div>
+      </div>
+    </div>
+  );
+};
 export const RadioNavigater = () => {
   return (
     <nav className="radioNav">

@@ -1,43 +1,56 @@
 import React from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
-
+import { Header } from './../App';
 
 const Socialing = () => {
   return (
     <>
-
-    <div className="social_wrapper">
-      <div className="header">
-        <div className="social_header">
-          <div className="social_title_back">
-            <img src="./img/back.png" alt="뒤로가기"></img>
-          </div>
-          <span className="social_title h3 bold">소셜링</span>
-          <div className="social_title_add">
-            <img src="./img/plus.png" alt="소셜링 열기"></img>
-          </div>
+      <div className="social_wrapper">
+        <Header></Header>
+        <div className="search_box">
+          <input type="text" className="search" placeholder=" 검색" />
         </div>
-      </div>
 
-      <div className="search_box">
-        <input type="text" className="search" placeholder=" 검색" />
+        <div className="category">
+          <MiniButton
+            onClick={(e) => {
+              e.target.classList.toggle("active");
+            }}
+            className="active"
+          >
+            전체보기
+          </MiniButton>
+          <MiniButton
+            onClick={(e) => {
+              e.target.classList.toggle("active");
+            }}
+          >
+            레스토랑
+          </MiniButton>
+          <MiniButton
+            onClick={(e) => {
+              e.target.classList.toggle("active");
+            }}
+          >
+            카페
+          </MiniButton>
+          <MiniButton
+            onClick={(e) => {
+              e.target.classList.toggle("active");
+            }}
+          >
+            호텔
+          </MiniButton>
+        </div>
+        <>
+          <SocialingElement />
+          <SocialingElement />
+          <SocialingElement />
+          <SocialingElement />
+          <SocialingElement />
+        </>
       </div>
-
-      <div className="category">
-        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}} className = "active">전체보기</MiniButton>
-        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>레스토랑</MiniButton>
-        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>카페</MiniButton>
-        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>호텔</MiniButton>
-      </div>
-      <>
-        <SocialingElement />
-        <SocialingElement />
-        <SocialingElement />
-        <SocialingElement />
-        <SocialingElement />
-      </>
-    </div>
     </>
   );
 };

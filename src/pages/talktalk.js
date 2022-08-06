@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
-import { RadioNavigater } from "./../App";
 
 const TalkTalk = () => {
   return (
