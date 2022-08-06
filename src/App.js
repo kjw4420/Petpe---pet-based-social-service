@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/social" element={<Socialing />} />
           <Route exact path="/talktalk" element={<TalkTalk />} />
           <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/place" element={<Profile />} />
+          <Route exact path="/place" element={<Place />} />
         </Routes>
       </BrowserRouter>
     </>
