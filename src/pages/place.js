@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
-import Container from "../components/container";
 import MiniButton from "../components/minibutton";
 import "./Place.css";
+import { RadioNavigater } from './../App';
 
 
 const Place = () => {
   return(
-  
+  <>
+
       <div className="place_header">
         <div  className="place_search">
           <input type="text" className="search" placeholder=" 검색" />
@@ -20,7 +20,7 @@ const Place = () => {
       </div>
         
       </div>
-    
+  </>  
   )
 };
 

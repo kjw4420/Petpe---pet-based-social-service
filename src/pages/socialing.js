@@ -2,8 +2,11 @@ import React from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
 
+
 const Socialing = () => {
   return (
+    <>
+
     <div className="social_wrapper">
       <div className="header">
         <div className="social_header">
@@ -35,6 +38,7 @@ const Socialing = () => {
         <SocialingElement />
       </>
     </div>
+    </>
   );
 };
 

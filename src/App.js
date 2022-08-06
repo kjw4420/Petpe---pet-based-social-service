@@ -5,13 +5,13 @@ import Story from "./pages/Story";
 import Socialing from "./pages/socialing";
 import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
-import Place from "./pages/Place"
+import Place from "./pages/place"
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <RadioNavigater></RadioNavigater>
+      <RadioNavigater></RadioNavigater>
         <Routes>
           <Route exact path="/" element={<Story />} />
           <Route exact path="/login" element={<Login />} />
@@ -25,7 +25,7 @@ function App() {
   );
 }
 
-const RadioNavigater = () => {
+export const RadioNavigater = () => {
   return (
     <nav className="radioNav">
       <NavLink to="/">
