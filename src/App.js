@@ -5,7 +5,7 @@ import Story from "./pages/Story";
 import Socialing from "./pages/socialing";
 import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
-import Place from "./pages/place"
+import Place from "./pages/Place"
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/social" element={<Socialing />} />
           <Route exact path="/talktalk" element={<TalkTalk />} />
           <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/place" element={<Place />} />
+          <Route exact path="/Place" element={<Place />} />
         </Routes>
       </BrowserRouter>
     </>
