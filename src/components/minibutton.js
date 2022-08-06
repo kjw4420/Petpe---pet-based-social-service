@@ -14,6 +14,7 @@ margin-right: 5px;
   color: var(--background-white);
   background-color: var(--main-deep-brown);
   border: none;
+  padding: 0 11px;
 }
 `
 

@@ -22,10 +22,10 @@ const Socialing = () => {
       </div>
 
       <div className="category">
-        <MiniButton className="active">전체보기</MiniButton>
-        <MiniButton>레스토랑</MiniButton>
-        <MiniButton>카페</MiniButton>
-        <MiniButton>호텔</MiniButton>
+        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}} className = "active">전체보기</MiniButton>
+        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>레스토랑</MiniButton>
+        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>카페</MiniButton>
+        <MiniButton onClick={(e)=>{e.target.classList.toggle("active")}}>호텔</MiniButton>
       </div>
       <>
         <SocialingElement />
