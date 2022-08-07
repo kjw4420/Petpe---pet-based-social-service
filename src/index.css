@@ -36,7 +36,9 @@ input {
 .skeleton {
   background-color: var(--font-gray);
 }
-
+img{
+  display: block !important;
+}
 /* 컬러시스템 */
 .fontgray, 
 ::placeholder {

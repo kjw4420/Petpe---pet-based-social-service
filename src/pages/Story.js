@@ -66,9 +66,9 @@ export const StoryEle = (props) => {
         >
           {props.pictures.map((e) => {
             return (
-              <div className="imgWrapper">
+              
                 <img src={e.picture} alt={props.userName+"의 사진"} />
-              </div>
+              
             );
           })}
         </Slider>
