@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
 import axios from "../../node_modules/axios/index";
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -25,7 +24,7 @@ const Story = () => {
   return (
     <>
       <section className="storyWrapper">
-        {dummydata.map((props) => {
+        {story.map((props) => {
           return StoryEle(props);
         })}
         <button onClick={updateStories}>더보기</button>
@@ -76,8 +75,8 @@ export const StoryEle = (props) => {
       <div className="storyInteractionWrapper">
         <div className="icon">
           <svg
-            width="32"
-            height="32"
+            width="24"
+            height="24"
             viewBox="0 0 20 21"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -103,70 +102,70 @@ export const StoryEle = (props) => {
 
 export default Story;
 
-const dummydata = [
-  {
-    id: 1,
-    userName: "kimcoding",
-    userNickName: "ppomi13",
-    pictures: [
-      { picture: "https://randomuser.me/api/portraits/men/1.jpg" },
-      { picture: "https://randomuser.me/api/portraits/men/2.jpg" },
-    ],
-    content:
-      "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-    createdAt: "2022-02-24T16:17:47.000Z",
-    updatedAt: "2022-02-24T16:17:47.000Z",
-  },
-  {
-    id: 2,
-    userName: "parkhacker",
-    userNickName: "ppi13mi",
-    pictures: [
-      { picture: "https://randomuser.me/api/portraits/men/3.jpg" },
-      { picture: "https://randomuser.me/api/portraits/men/4.jpg" },
-    ],
-    content:
-      "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-    createdAt: "2022-02-24T16:17:47.000Z",
-    updatedAt: "2022-02-24T16:17:47.000Z",
-  },
-  {
-    id: 3,
-    userName: "leedesign",
-    userNickName: "p131358",
-    pictures: [
-      { picture: "https://randomuser.me/api/portraits/men/5.jpg" }
+// const dummydata = [
+//   {
+//     id: 1,
+//     userName: "kimcoding",
+//     userNickName: "ppomi13",
+//     pictures: [
+//       { picture: "https://randomuser.me/api/portraits/men/1.jpg" },
+//       { picture: "https://randomuser.me/api/portraits/men/2.jpg" },
+//     ],
+//     content:
+//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
+//     createdAt: "2022-02-24T16:17:47.000Z",
+//     updatedAt: "2022-02-24T16:17:47.000Z",
+//   },
+//   {
+//     id: 2,
+//     userName: "parkhacker",
+//     userNickName: "ppi13mi",
+//     pictures: [
+//       { picture: "https://randomuser.me/api/portraits/men/3.jpg" },
+//       { picture: "https://randomuser.me/api/portraits/men/4.jpg" },
+//     ],
+//     content:
+//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
+//     createdAt: "2022-02-24T16:17:47.000Z",
+//     updatedAt: "2022-02-24T16:17:47.000Z",
+//   },
+//   {
+//     id: 3,
+//     userName: "leedesign",
+//     userNickName: "p131358",
+//     pictures: [
+//       { picture: "https://randomuser.me/api/portraits/men/5.jpg" }
       
-    ],
-    content:
-      "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-    createdAt: "2022-02-24T16:17:47.000Z",
-    updatedAt: "2022-02-24T16:17:47.000Z",
-  },
-  {
-    id: 4,
-    userName: "songfront",
-    userNickName: "ppasdg3",
-    pictures: [
-      { picture: "https://randomuser.me/api/portraits/men/7.jpg" },
-      { picture: "https://randomuser.me/api/portraits/men/8.jpg" },
-    ],
-    content:
-      "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-    createdAt: "2022-02-24T16:17:47.000Z",
-    updatedAt: "2022-02-24T16:17:47.000Z",
-  },
-  {
-    id: 5,
-    userName: "choiback",
-    userNickName: "ppoafsdg3",
-    pictures: [
-      { picture: "https://randomuser.me/api/portraits/men/9.jpg" },
-      { picture: "https://randomuser.me/api/portraits/men/10.jpg" },
-    ],
-    content:
-      "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-    createdAt: "2022-02-24T16:17:47.000Z",
-    updatedAt: "2022-02-24T16:17:47.000Z",
-  },
-];
+//     ],
+//     content:
+//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
+//     createdAt: "2022-02-24T16:17:47.000Z",
+//     updatedAt: "2022-02-24T16:17:47.000Z",
+//   },
+//   {
+//     id: 4,
+//     userName: "songfront",
+//     userNickName: "ppasdg3",
+//     pictures: [
+//       { picture: "https://randomuser.me/api/portraits/men/7.jpg" },
+//       { picture: "https://randomuser.me/api/portraits/men/8.jpg" },
+//     ],
+//     content:
+//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
+//     createdAt: "2022-02-24T16:17:47.000Z",
+//     updatedAt: "2022-02-24T16:17:47.000Z",
+//   },
+//   {
+//     id: 5,
+//     userName: "choiback",
+//     userNickName: "ppoafsdg3",
+//     pictures: [
+//       { picture: "https://randomuser.me/api/portraits/men/9.jpg" },
+//       { picture: "https://randomuser.me/api/portraits/men/10.jpg" },
+//     ],
+//     content:
+//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
+//     createdAt: "2022-02-24T16:17:47.000Z",
+//     updatedAt: "2022-02-24T16:17:47.000Z",
+//   },
+// ];

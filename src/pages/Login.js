@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
 
 function Login() {
-
-  let [idValue, setIdInput] = useState(false);
-  let [pwValue, setPwInput] = useState(false);
-  
+  const [idValue, setIdInput] = useState(false);
+  const [pwValue, setPwInput] = useState(false);
+  const errorAlerterRef = React.useRef()
 
   // 유효성검사함수
   const handleId = (e) => {
@@ -16,10 +15,10 @@ function Login() {
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     // 형식에 맞는 경우 true 리턴
     if (email.test(e.target.value)) {
-      document.getElementById("errorAlerter").textContent = "";
+      errorAlerterRef.current.textContent = "";
       setIdInput(true);
     } else {
-      document.getElementById("errorAlerter").textContent =
+      errorAlerterRef.current.textContent =
         "올바른 이메일을 입력해주세요";
       setIdInput(false);
     }
@@ -31,12 +30,12 @@ function Login() {
     let password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     // 형식에 맞는 경우 true 리턴
     if (password.test(e.target.value)) {
-      document.getElementById("errorAlerter").textContent = "";
+      errorAlerterRef.current.textContent = "";
 
       //비번이 맞을시, pw검사 state를 true로
       setPwInput(true);
     } else {
-      document.getElementById("errorAlerter").textContent =
+      errorAlerterRef.current.textContent =
         "8자리 이상의 영문, 숫자, 특수문자";
 
       //비번이 틀릴시, pw검사 state를 false로
@@ -55,7 +54,7 @@ function Login() {
           </Link>
         </header>
 
-        <form>
+        <form action="#">
           <div className="input_wrapper">
             <input
               type="text"
@@ -96,7 +95,7 @@ function Login() {
               </span>
             </div>
           </div>
-          <div id="errorAlerter"></div>
+          <div id="errorAlerter" ref={errorAlerterRef}></div>
 
           {/* 조건부 링크 */}
           <Link to={idValue && pwValue ? "/" : "#" }>
