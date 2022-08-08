@@ -11,13 +11,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <FunctionalComponent></FunctionalComponent> */}
         <Header></Header>
         <RadioNavigater></RadioNavigater>
         <Routes>
           <Route exact path="/" element={<Story />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/social" element={<Socialing />} />
+          <Route exact path="/social/*" element={<Socialing />} />
           <Route exact path="/talktalk" element={<TalkTalk />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/Place" element={<Place />} />
