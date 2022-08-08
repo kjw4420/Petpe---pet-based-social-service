@@ -11,7 +11,7 @@ const Story = () => {
   useEffect(() => {
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
-    });
+    }).then((res)=>{console.log(res)});
   }, []);
 
   // 새로고침용 함수
@@ -39,18 +39,15 @@ export const StoryEle = (props) => {
       <div className="userProfileWrapper">
         <div className="userProfile-sm">
           <img
-            // src={props.userPicture}
-            src={props.pictures[0].picture}
+            src={props.userimage}
             alt={props.userName + "의 프로필사진"}
           />
           <div>
             <span className="p">
-              {props.userName ? props.userName : "userName이 없습니다"}
+              {props.useremail}
             </span>
             <span className="h5 fontgray">
-              {props.userNickName
-                ? props.userNickName
-                : "userNickName이 없습니다"}
+              {props.username}
             </span>
           </div>
         </div>
@@ -59,15 +56,15 @@ export const StoryEle = (props) => {
         <Slider
           dots={true}
           infinite={true}
-          speed={500}
+          speed={300}
           slidesToShow={1}
           slidesToScroll={1}
+          className="img_slider"
         >
           {props.pictures.map((e) => {
+            console.log(props.pictures)
             return (
-              
-                <img src={e.picture} alt={props.userName+"의 사진"} />
-              
+                <img src={e.picture} alt={props.username+"의 사진"}/>
             );
           })}
         </Slider>
@@ -101,71 +98,3 @@ export const StoryEle = (props) => {
 };
 
 export default Story;
-
-// const dummydata = [
-//   {
-//     id: 1,
-//     userName: "kimcoding",
-//     userNickName: "ppomi13",
-//     pictures: [
-//       { picture: "https://randomuser.me/api/portraits/men/1.jpg" },
-//       { picture: "https://randomuser.me/api/portraits/men/2.jpg" },
-//     ],
-//     content:
-//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-//     createdAt: "2022-02-24T16:17:47.000Z",
-//     updatedAt: "2022-02-24T16:17:47.000Z",
-//   },
-//   {
-//     id: 2,
-//     userName: "parkhacker",
-//     userNickName: "ppi13mi",
-//     pictures: [
-//       { picture: "https://randomuser.me/api/portraits/men/3.jpg" },
-//       { picture: "https://randomuser.me/api/portraits/men/4.jpg" },
-//     ],
-//     content:
-//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-//     createdAt: "2022-02-24T16:17:47.000Z",
-//     updatedAt: "2022-02-24T16:17:47.000Z",
-//   },
-//   {
-//     id: 3,
-//     userName: "leedesign",
-//     userNickName: "p131358",
-//     pictures: [
-//       { picture: "https://randomuser.me/api/portraits/men/5.jpg" }
-      
-//     ],
-//     content:
-//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-//     createdAt: "2022-02-24T16:17:47.000Z",
-//     updatedAt: "2022-02-24T16:17:47.000Z",
-//   },
-//   {
-//     id: 4,
-//     userName: "songfront",
-//     userNickName: "ppasdg3",
-//     pictures: [
-//       { picture: "https://randomuser.me/api/portraits/men/7.jpg" },
-//       { picture: "https://randomuser.me/api/portraits/men/8.jpg" },
-//     ],
-//     content:
-//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-//     createdAt: "2022-02-24T16:17:47.000Z",
-//     updatedAt: "2022-02-24T16:17:47.000Z",
-//   },
-//   {
-//     id: 5,
-//     userName: "choiback",
-//     userNickName: "ppoafsdg3",
-//     pictures: [
-//       { picture: "https://randomuser.me/api/portraits/men/9.jpg" },
-//       { picture: "https://randomuser.me/api/portraits/men/10.jpg" },
-//     ],
-//     content:
-//       "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 모든 국민은 종교의 자유를 가진다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 모든 국민은 양심의 자유를 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다.",
-//     createdAt: "2022-02-24T16:17:47.000Z",
-//     updatedAt: "2022-02-24T16:17:47.000Z",
-//   },
-// ];

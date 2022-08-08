@@ -55,12 +55,7 @@ a.active>div{
   align-items: center;
   padding: 10px 20px;
 }
-.imgWrapper>img{
-  display: block;
-  width: 100%;
-  max-width: 470px;
-  background-color: var(--line-gray);
-}
+
 .storyInteractionWrapper{
   width: 100%;
   border-width: 1px 0px;

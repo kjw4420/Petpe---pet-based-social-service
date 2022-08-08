@@ -31,7 +31,13 @@
     height: 70px;
     border-bottom: 1px solid var(--line-gray);
 }
-
+.social_chatting{
+    cursor: pointer;
+}
+.social_chatting img{
+    width: 150px;
+    object-fit: cover;
+}
 .social_title_add{
     display: flex;
     align-items: center;
