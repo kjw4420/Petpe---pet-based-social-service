@@ -54,7 +54,7 @@ function Login() {
           </Link>
         </header>
 
-        <form action="#">
+        <form method="post" action="#">
           <div className="input_wrapper">
             <input
               type="text"
@@ -100,11 +100,11 @@ function Login() {
           {/* 조건부 링크 */}
           <Link to={idValue && pwValue ? "/" : "#" }>
             <ButtonLarge
-              as="button"
+              as="input"
               type="submit"
               className={idValue && pwValue ? "" : "disabled"}
+              value = "로그인"
             >
-              로그인
             </ButtonLarge>
 
           </Link>

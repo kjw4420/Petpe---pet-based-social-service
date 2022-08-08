@@ -11,7 +11,7 @@ const Story = () => {
   useEffect(() => {
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
-    }).then((res)=>{console.log(res)});
+    });
   }, []);
 
   // 새로고침용 함수
@@ -59,12 +59,11 @@ export const StoryEle = (props) => {
           speed={300}
           slidesToShow={1}
           slidesToScroll={1}
-          className="img_slider"
+          className="slider"
         >
           {props.pictures.map((e) => {
-            console.log(props.pictures)
             return (
-                <img src={e.picture} alt={props.username+"의 사진"}/>
+                <img src={e.picture} alt={props.username+"의 사진"} key={props.pictures.indexOf(e)}/>
             );
           })}
         </Slider>
