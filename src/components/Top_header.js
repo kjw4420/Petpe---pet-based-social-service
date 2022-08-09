@@ -11,11 +11,11 @@ margin:10px;
 float: left;
 cursor:pointer;
 margin-right: auto;
-padding-top:10px;
+padding-top: 10px;
 `
 const ImgElement =styled.div`
 margin: 10px;
-float:right;
+float: right;
 cursor: pointer;
 padding-top: 10px;
 
