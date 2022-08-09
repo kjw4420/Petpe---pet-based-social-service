@@ -39,26 +39,11 @@ const NewSocialing = () => {
       <section className="social_wrapper">
         <PaddingWrap>
           <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
-
-          <div className="social_category_wrapper active">
-            <div className="new_social_left_WRApp">
-              <img className="new_social_icon" src="../../img/social_category_workout.jpg" alt="" />
-              <div className="new_social_left">
-                <p>운동 / 액티비티</p>
-                <span className="h5 fontgray">산책,등산,워킹</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="social_category_wrapper">
-            <div>
-              <img className="new_social_icon" src="../../img/social_category_workout.jpg" alt="" />
-              <div className="new_social_left">
-                <p>푸드 / 드링크</p>
-                <span className="h5 fontgray">맛집투어, 카페, 디저트</span>
-              </div>
-            </div>
-          </div>
+          <SocialCategory title={"운동 / 액티비티"} description={"산책,등산,워킹"} type="workout"/>
+          <SocialCategory title={"푸드 / 드링크"} description={"맛집투어, 카페, 디저트"}/>
+          <SocialCategory title={"여행 / 나들이"} description={"복합문화공간, 피크닉, 드라이브"}/>
+          <SocialCategory title={"교육"} description={"반려동물 교육, 훈련, 돌봄"}/>
+          <SocialCategory title={"성장 / 자기계발"} description={"펫베이커리, 코디네이터, 관리사, 행동교정사 "}/>
         </PaddingWrap>
       </section>
     </>
@@ -88,6 +73,23 @@ export const SocialingElement = (props) => {
 };
 
 export default Socialing;
+const SocialCategory = ({ title, description, type }) => {
+  return (
+    <div className="social_category_wrapper">
+      <div className="new_social_left_WRApp">
+        <img
+          className="new_social_icon"
+          src={`../../img/social_category_${type}.jpg`}
+          alt=""
+        />
+        <div className="new_social_left">
+          <p>{title}</p>
+          <span className="h5 fontgray">{description}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const dummyDataForSocial = [
   {
