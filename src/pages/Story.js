@@ -4,6 +4,7 @@ import axios from "../../node_modules/axios/index";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Top_header from "../components/Top_header";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
@@ -22,6 +23,7 @@ const Story = () => {
   };
 
   return (
+    
     <>
       <section className="storyWrapper">
         {story.map((props) => {
@@ -35,6 +37,8 @@ const Story = () => {
 
 export const StoryEle = (props) => {
   return (
+    <>
+    <Top_header/>
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
         <div className="userProfile-sm">
@@ -93,6 +97,7 @@ export const StoryEle = (props) => {
         </span>
       </div>
     </div>
+    </>
   );
 };
 
