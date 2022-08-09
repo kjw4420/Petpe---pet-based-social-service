@@ -12,14 +12,14 @@ function App() {
     <>
       <BrowserRouter>
         <Header></Header>
-        <RadioNavigater></RadioNavigater>
+
         <Routes>
-          <Route exact path="/" element={<Story />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/social/*" element={<Socialing />} />
-          <Route exact path="/talktalk" element={<TalkTalk />} />
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/Place" element={<Place />} />
+          <Route path="/" element={<Story />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/social/*" element={<Socialing />} />
+          <Route path="/talktalk" element={<TalkTalk />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/Place" element={<Place />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -31,11 +31,11 @@ export const Header = () => {
     <div className="header">
       <div className="social_header">
         <div className="social_title_back">
-          <img src="./img/back.png" alt="뒤로가기"></img>
+          <img src="../img/back.png" alt="뒤로가기"></img>
         </div>
         <span className="social_title h3 bold">소셜링</span>
         <div className="social_title_add">
-          <img src="./img/plus.png" alt="소셜링 열기"></img>
+          <img src="../img/plus.png" alt="소셜링 열기"></img>
         </div>
       </div>
     </div>

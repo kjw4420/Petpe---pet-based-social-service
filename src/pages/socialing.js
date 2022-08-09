@@ -1,32 +1,67 @@
 import React, { useState } from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { RadioNavigater } from "../App";
+import { PaddingWrap } from "./../components/container";
 
 const Socialing = () => {
   const [socialPost, setSocialPost] = useState(dummyDataForSocial);
 
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route>
-          <>
-            <div className="social_wrapper">
-              <div className="search_box">
-                <input type="text" className="search" placeholder=" 검색" />
-              </div>
-              <Category></Category>
-              <>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="social_wrapper">
+                <RadioNavigater></RadioNavigater>
+                <div className="search_box">
+                  <input type="text" className="search" placeholder=" 검색" />
+                </div>
+                <Category></Category>
                 {socialPost.map((e) => {
                   return SocialingElement(e);
                 })}
-              </>
+              </div>
+            </>
+          }
+        />
+        <Route path="/newsocial" element={<NewSocialing />} />
+      </Routes>
+    </>
+  );
+};
+const NewSocialing = () => {
+  return (
+    <>
+      <section className="social_wrapper">
+        <PaddingWrap>
+          <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
+
+          <div className="social_category_wrapper active">
+            <div className="new_social_left_WRApp">
+              <img className="new_social_icon" src="../../img/social_category_workout.jpg" alt="" />
+              <div className="new_social_left">
+                <p>운동 / 액티비티</p>
+                <span className="h5 fontgray">산책,등산,워킹</span>
+              </div>
             </div>
-          </>
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
+          </div>
+
+          <div className="social_category_wrapper">
+            <div>
+              <img className="new_social_icon" src="../../img/social_category_workout.jpg" alt="" />
+              <div className="new_social_left">
+                <p>푸드 / 드링크</p>
+                <span className="h5 fontgray">맛집투어, 카페, 디저트</span>
+              </div>
+            </div>
+          </div>
+        </PaddingWrap>
+      </section>
+    </>
   );
 };
 
