@@ -40,8 +40,9 @@ const NewSocialing = () => {
     <>
       <section className="social_wrapper">
         {/* <ChooseNewCategory />
-        <TypeNewTitle /> */}
-        <TypeNewDetail />
+        <TypeNewTitle /> 
+        <TypeNewDetail />*/}
+        <TypeNewTime />
       </section>
     </>
   );
@@ -112,8 +113,8 @@ const TypeNewDetail = () => {
   const [typedDetail, setTypedDetail] = useState(false);
   return (
     <PaddingWrap>
-      <span className="h4 newsocial_title">소셜링 내용을 작성해볼까요?</span>  
-      <input type="file" id="fileUpload"/>
+      <span className="h4 newsocial_title">소셜링 내용을 작성해볼까요?</span>
+      <input type="file" id="fileUpload" />
       <StyledInput
         as="textarea"
         id="new_social_detail"
@@ -124,9 +125,34 @@ const TypeNewDetail = () => {
         }}
         placeholder="소셜링 내용을 입력해주세요"
       />
-      
+
       <div className="input_length_counter"></div>
       <ButtonLarge className={typedDetail ? "" : "disabled"}>다음</ButtonLarge>
+    </PaddingWrap>
+  );
+};
+// =====================내용작성
+const TypeNewTime = () => {
+  const [typedTime, setTypedTime] = useState();
+  const [typedDate, setTypedDate] = useState();
+  return (
+    <PaddingWrap>
+      <span className="h4 newsocial_title">언제 만날까요?</span>
+      <input
+        type="date"
+        onChange={(e) => {
+          setTypedDate(e.target.value);
+        }}
+      />
+      <input
+        type="time"
+        onChange={(e) => {
+          setTypedTime(e.target.value);
+        }}
+      />
+
+      <div className="input_length_counter"></div>
+      <ButtonLarge className={typedTime&&typedDate ? "" : "disabled"}>다음</ButtonLarge>
     </PaddingWrap>
   );
 };
