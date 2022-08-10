@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const TopElement=styled.div`
 width: 100%;
@@ -36,7 +36,7 @@ const Top_header = () => {
             </ImgElement>
         </TopElement>
             
-   
+
     );
 }
 

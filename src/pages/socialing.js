@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
 import { Routes, Route } from "react-router-dom";
 import { RadioNavigater } from "../App";
 import { PaddingWrap } from "./../components/container";
+import ButtonLarge, { StyledInput } from "../components/globalComponent";
 
 const Socialing = () => {
   const [socialPost, setSocialPost] = useState(dummyDataForSocial);
@@ -20,7 +21,7 @@ const Socialing = () => {
                 <div className="search_box">
                   <input type="text" className="search" placeholder=" 검색" />
                 </div>
-                <Category></Category>
+                <Category />
                 {socialPost.map((e) => {
                   return SocialingElement(e);
                 })}
@@ -33,23 +34,104 @@ const Socialing = () => {
     </>
   );
 };
+
 const NewSocialing = () => {
   return (
     <>
       <section className="social_wrapper">
-        <PaddingWrap>
-          <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
-          <SocialCategory title={"운동 / 액티비티"} description={"산책,등산,워킹"} type="workout"/>
-          <SocialCategory title={"푸드 / 드링크"} description={"맛집투어, 카페, 디저트"}/>
-          <SocialCategory title={"여행 / 나들이"} description={"복합문화공간, 피크닉, 드라이브"}/>
-          <SocialCategory title={"교육"} description={"반려동물 교육, 훈련, 돌봄"}/>
-          <SocialCategory title={"성장 / 자기계발"} description={"펫베이커리, 코디네이터, 관리사, 행동교정사 "}/>
-        </PaddingWrap>
+        {/* <ChooseNewCategory />
+        <TypeNewTitle /> */}
+        <TypeNewDetail />
       </section>
     </>
   );
 };
 
+// ===============카테고리 선택창
+const ChooseNewCategory = () => {
+  return (
+    <PaddingWrap>
+      <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
+      <SocialCategory
+        title={"운동 / 액티비티"}
+        description={"산책,등산,워킹"}
+        type="workout"
+        active={true}
+      />
+      <SocialCategory
+        title={"푸드 / 드링크"}
+        description={"맛집투어, 카페, 디저트"}
+        type="food"
+      />
+      <SocialCategory
+        title={"여행 / 나들이"}
+        description={"복합문화공간, 피크닉, 드라이브"}
+        type="travel"
+      />
+      <SocialCategory
+        title={"교육"}
+        description={"반려동물 교육, 훈련, 돌봄"}
+        type="education"
+      />
+      <SocialCategory
+        title={"성장 / 자기계발"}
+        description={"펫베이커리, 코디네이터, 관리사"}
+        type="growth"
+      />
+      <ButtonLarge children="다음" />
+    </PaddingWrap>
+  );
+};
+// ============제목작성
+const TypeNewTitle = () => {
+  const [typedTitle, setTypedTitle] = useState(false);
+  return (
+    <PaddingWrap>
+      <span className="h4 newsocial_title">소셜링 제목을 작성해볼까요?</span>
+      <StyledInput
+        className="social_title_input"
+        type="text"
+        onChange={(e) => {
+          setTypedTitle(e.target.value);
+          if (typedTitle.length > 30) {
+            e.target.value = e.target.value.substring(0, 29);
+          }
+        }}
+        placeholder="마음이 맞는 이웃과 소셜링을 진행해보세요"
+      />
+      <div className="input_length_counter">
+        <span>{typedTitle ? typedTitle.length : 0}</span>
+        <span className="font_light_gray">/30</span>
+      </div>
+      <ButtonLarge className={typedTitle ? "" : "disabled"}>다음</ButtonLarge>
+    </PaddingWrap>
+  );
+};
+// =====================내용작성
+const TypeNewDetail = () => {
+  const [typedDetail, setTypedDetail] = useState(false);
+  return (
+    <PaddingWrap>
+      <span className="h4 newsocial_title">소셜링 내용을 작성해볼까요?</span>  
+      <input type="file" id="fileUpload"/>
+      <StyledInput
+        as="textarea"
+        id="new_social_detail"
+        className="social_title_input"
+        type="text"
+        onChange={(e) => {
+          setTypedDetail(e.target.value);
+        }}
+        placeholder="소셜링 내용을 입력해주세요"
+      />
+      
+      <div className="input_length_counter"></div>
+      <ButtonLarge className={typedDetail ? "" : "disabled"}>다음</ButtonLarge>
+    </PaddingWrap>
+  );
+};
+
+// ===============단일 소셜링
 export const SocialingElement = (props) => {
   return (
     <div className="social_chatting" key={props.id}>
@@ -63,20 +145,25 @@ export const SocialingElement = (props) => {
         <span className="h5">{props.date}</span>
         <span className="h5 fontgray">{props.location}</span>
         <span className="p fontgray">
-          {props.maxParticipant - props.participant.length > 0
+          {/* {props.maxParticipant - props.participant.length > 0
             ? `${props.maxParticipant - props.participant.length}명 참여가능`
-            : "마감된 소셜링"}
+            : "마감된 소셜링"} */}
+          {`${props.participant.length}명 / ${props.maxParticipant}명`}
         </span>
       </div>
     </div>
   );
 };
 
-export default Socialing;
-const SocialCategory = ({ title, description, type }) => {
+// ===============카테고리 엘리먼트
+const SocialCategory = ({ title, description, type, active }) => {
   return (
-    <div className="social_category_wrapper">
-      <div className="new_social_left_WRApp">
+    <div
+      className={
+        active ? "social_category_wrapper active" : "social_category_wrapper"
+      }
+    >
+      <div className="new_social_left_wrap">
         <img
           className="new_social_icon"
           src={`../../img/social_category_${type}.jpg`}
@@ -87,10 +174,16 @@ const SocialCategory = ({ title, description, type }) => {
           <span className="h5 fontgray">{description}</span>
         </div>
       </div>
+      <div className="new_social_right_wrap">
+        <img
+          src={`../../img/selectbtn_${active ? `active` : `disable`}.png`}
+          alt="선택됨"
+        />
+      </div>
     </div>
   );
 };
-
+// ============더미데이터
 const dummyDataForSocial = [
   {
     id: 1,
@@ -159,3 +252,4 @@ const Category = () => {
     </div>
   );
 };
+export default Socialing;

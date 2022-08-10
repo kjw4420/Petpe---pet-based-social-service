@@ -40,14 +40,15 @@ img{
   display: block !important;
 }
 /* 컬러시스템 */
-.fontgray, 
-::placeholder {
+.fontgray {
   color: var(--font-gray)
 }
 .font_deep_brown {
   color: var(--main-deep-brown);
 }
-.fot
+.font_light_gray,::placeholder{
+  color: var(--font-light-gray);
+}
 
 /* 타입시스템 */
 .bold {
@@ -85,4 +86,10 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and(max-width:425px) {
+  *{
+    letter-spacing: 10px;
+  }
 }

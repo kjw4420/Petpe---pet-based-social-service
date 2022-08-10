@@ -3,7 +3,6 @@ import styled from "styled-components";
 // 버튼컴포넌트
 const ButtonLarge = styled.div`
   min-width: 300px;
-  max-width: 330px;
   width: 100%;
   height: 46px;
   padding: 10px 0;
@@ -25,8 +24,11 @@ const ButtonLarge = styled.div`
     background-color: #fff;
   }
 `;
+export const StyledInput = styled.input`
+  border-bottom: 1px solid var(--font-black);
+  width: 100%;
+`
 
 // ---------스토리컴포넌트
-
 
 export default ButtonLarge;
