@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import Login from "./pages/Login";
 import Story from "./pages/Story";
@@ -9,24 +9,28 @@ import Place from "./pages/place";
 import axios from "../node_modules/axios/index";
 
 function App() {
-
-  const [link,setLink]=useState()
+  const [link, setLink] = useState();
   const testfav = () => {
     axios.post(link).then((response) => {
-    console.log(response.data);
-;
+      console.log(response.data);
     });
   };
   return (
     <>
       <BrowserRouter>
-      
         <Header></Header>
-        <input type="text" placeholder="주소입력창" onChange={(e)=>{setLink(e.target.value)}}/>
-        <button onClick={testfav} >좋아요 테스트용 버튼</button>
+        <input
+          type="text"
+          placeholder="주소입력창"
+          onChange={(e) => {
+            setLink(e.target.value);
+          }}
+        />
+        <button onClick={testfav}>좋아요 테스트용 버튼</button>
         <p>{`포스트요청이고, 날라온 데이터는 콘솔에`}</p>
         <Routes>
           <Route path="/" element={<Story />} />
+          <Route path="*" element={<WrongPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/social/*" element={<Socialing />} />
           <Route path="/talktalk" element={<TalkTalk />} />
@@ -37,6 +41,13 @@ function App() {
     </>
   );
 }
+export const WrongPage = () => {
+  return (
+    <>
+      <h1>존재하지 않는 페이지입니다</h1>
+    </>
+  );
+};
 
 export const Header = () => {
   return (
