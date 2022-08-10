@@ -6,14 +6,25 @@ import Socialing from "./pages/socialing";
 import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
 import Place from "./pages/place";
+import axios from "../node_modules/axios/index";
 
 function App() {
+
+  const [link,setLink]=useState()
+  const testfav = () => {
+    axios.post(link).then((response) => {
+    console.log(response.data);
+;
+    });
+  };
   return (
     <>
       <BrowserRouter>
       
         <Header></Header>
-
+        <input type="text" placeholder="주소입력창" onChange={(e)=>{setLink(e.target.value)}}/>
+        <button onClick={testfav} >좋아요 테스트용 버튼</button>
+        <p>{`포스트요청이고, 날라온 데이터는 콘솔에`}</p>
         <Routes>
           <Route path="/" element={<Story />} />
           <Route path="/login" element={<Login />} />
