@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
+import useAuth from './../hooks/useAuth';
 
 function Login() {
+  const {setAuth} = useAuth()
   const [idValue, setIdInput] = useState(false);
   const [pwValue, setPwInput] = useState(false);
   const errorAlerterRef = React.useRef()
+
 
   // 유효성검사함수
   const handleId = (e) => {
@@ -104,6 +107,7 @@ function Login() {
               type="submit"
               className={idValue && pwValue ? "" : "disabled"}
               value = "로그인"
+              // onClick={onLogin(idValue,pwValue)}
             >
             </ButtonLarge>
 
