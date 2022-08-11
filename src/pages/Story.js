@@ -4,7 +4,6 @@ import axios from "../../node_modules/axios/index";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Top_header from "../components/Top_header";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
@@ -37,8 +36,6 @@ const Story = () => {
 
 export const StoryEle = (props) => {
   return (
-    <>
-    <Top_header/>
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
         <div className="userProfile-sm">
@@ -48,7 +45,7 @@ export const StoryEle = (props) => {
           />
           <div>
             <span className="p">
-              {props.useremail}
+              {props.useremail.substr(0,props.useremail.indexOf("@"))}
             </span>
             <span className="h5 fontgray">
               {props.username}
@@ -58,6 +55,7 @@ export const StoryEle = (props) => {
       </div>
       <div className="imgWrapper">
         <Slider
+          key = {"slider"+props.id}
           dots={true}
           infinite={true}
           speed={300}
@@ -97,7 +95,7 @@ export const StoryEle = (props) => {
         </span>
       </div>
     </div>
-    </>
+
   );
 };
 

@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
 import { Routes, Route } from "react-router-dom";
-import { RadioNavigater } from "../App";
 import { PaddingWrap } from "./../components/container";
 import ButtonLarge, { StyledInput } from "../components/globalComponent";
 
@@ -17,7 +16,6 @@ const Socialing = () => {
           element={
             <>
               <div className="social_wrapper">
-                <RadioNavigater></RadioNavigater>
                 <div className="search_box">
                   <input type="text" className="search" placeholder=" 검색" />
                 </div>
@@ -39,9 +37,9 @@ const NewSocialing = () => {
   return (
     <>
       <section className="social_wrapper">
-        {/* <ChooseNewCategory />
+        <ChooseNewCategory />
         <TypeNewTitle /> 
-        <TypeNewDetail />*/}
+        <TypeNewDetail />
         <TypeNewTime />
       </section>
     </>

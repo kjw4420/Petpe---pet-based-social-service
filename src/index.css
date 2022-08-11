@@ -38,6 +38,7 @@ input {
 }
 img{
   display: block !important;
+  object-fit: cover;
 }
 /* 컬러시스템 */
 .fontgray {

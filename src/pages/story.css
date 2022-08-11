@@ -38,7 +38,11 @@ a.active>div{
   border: 1px solid var(--line-gray);
 }
 
-
+.slick-track{
+  display: flex !important;
+  align-items: center;
+  background-color: var(--background-gray);
+}
 .story{
   width: 100%;
   max-width: 470px;
@@ -87,7 +91,8 @@ a.active>div{
   display: block;
   border-radius: 100%;
   border: 2px solid var(--line-gray);
-  margin-right: 16px;
+  margin-right: 10px;
+
 }
 .icon{
   width: 36px;

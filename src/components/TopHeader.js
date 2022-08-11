@@ -1,19 +1,19 @@
 import React from "react";
 import styled from 'styled-components';
 
-const TopElement=styled.div`
+export const HeaderWrapper=styled.nav`
 width: 100%;
 height: 64px;
 display: flex;
 `
-const LogoElement=styled.div`
+export const LogoElement=styled.div`
 margin:10px;
 float: left;
 cursor:pointer;
 margin-right: auto;
 padding-top: 10px;
 `
-const ImgElement =styled.div`
+export const ImgElement =styled.div`
 margin: 10px;
 float: right;
 cursor: pointer;
@@ -22,9 +22,9 @@ padding-top: 10px;
 `
 
 
-const Top_header = () => {
+const TopHeader = () => {
     return (
-        <TopElement>
+        <HeaderWrapper>
             <LogoElement>
                 <img src="./img/Petpe_small.png" alt="로고" className="header_logo"/>
             </LogoElement>
@@ -34,10 +34,10 @@ const Top_header = () => {
             <ImgElement>
                 <img src="./img/profile_icon.png" alt="프로필아이콘" className="profile_icon"/>
             </ImgElement>
-        </TopElement>
+        </HeaderWrapper>
             
 
     );
 }
 
-export default Top_header;
+export default TopHeader;
