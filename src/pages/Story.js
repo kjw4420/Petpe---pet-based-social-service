@@ -7,9 +7,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
+
   const [story, setStory] = useState([]);
   useEffect(() => {
-    axios.get("http://3.39.181.250/story").then((response) => {
+    axios.get("http://3.39.181.250/story")
+    .then((response) => {
       setStory(response.data);
     });
   }, []);
