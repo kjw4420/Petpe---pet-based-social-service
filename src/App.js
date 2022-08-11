@@ -25,6 +25,7 @@ function App() {
       <Route element={<RequireAuth />}>
         <Route path="/profile" element={<Profile />} />
       </Route>
+      
       {/* catch up (오류) */}
       <Route path="*" element={<WrongPage />} />
     </Routes>
