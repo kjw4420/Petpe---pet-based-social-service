@@ -15,12 +15,10 @@ import useAuth from "../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
 
 const Login = () => {
-<<<<<<< HEAD
   const setAuth  = useAuth();
-
-=======
+  
   const { setAuth } = useAuth();
->>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -50,11 +48,11 @@ const Login = () => {
     try {
       const response = await axios.post(
         "http://3.39.181.250/accounts/login/",
-<<<<<<< HEAD
+
         JSON.stringify({"username":"", email:user, password:pwd}),
-=======
+
         JSON.stringify({ username: "", email: user, password: pwd }),
->>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
+
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -62,12 +60,12 @@ const Login = () => {
       );
 
       const accessToken = response?.data?.access_token;
-<<<<<<< HEAD
+
       setAuth({ user, pwd, accessToken });
       
-=======
+
       setAuth({ user: user, pwd: pwd, accessToken: accessToken });
->>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
+
       setUser("");
       setPwd("");
       navigate(from, { replace: true });
