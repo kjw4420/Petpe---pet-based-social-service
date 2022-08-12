@@ -6,6 +6,8 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import TopHeader from "../components/TopHeader";
+import { RadioNavigater } from "../components/globalComponent";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
@@ -54,6 +56,8 @@ const Story = () => {
   return (
     
     <>
+    <TopHeader/>
+    <RadioNavigater/>
       <section className="storyWrapper">
         {story.map((props) => {
           return StoryEle(props);

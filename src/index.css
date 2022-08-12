@@ -10,6 +10,7 @@
   color: var(--font-black);
   font-size: 1rem;
   font-weight: 400;
+  text-decoration: none;
 }
 :root{
   --main-deep-brown: #a68762;
