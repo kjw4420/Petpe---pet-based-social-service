@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/container";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
+
 import useAuth from "./../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
 
@@ -13,14 +14,18 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const errRef = useRef();
+
+
   const [user, setUser] = useState();
   const [pwd, setPwd] = useState();
   const [errMsg, setErrMsg] = useState("");
-  const errRef = useRef();
+
 
   const errorAlerterRef = useRef();
 
   const userIdRef = useRef();
+
   useEffect(() => {
     userIdRef.current.focus();
   }, []);
@@ -41,17 +46,19 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
           withCredentials: true
         }
-      );
+      )
+
+      const accessToken = response?.data?.access_token;
+      setAuth({ user, pwd, accessToken });
       
-      console.log(JSON.stringify(response?.data));
-      // console.log(JSON.stringify(response));
-      const accessToken = response?.data?.access_Token;
-      setAuth({ user, pwd, accessToken:accessToken });
 
       setUser("");
       setPwd("");
       navigate(from, { replace: true });
+
     } catch (err) {
+      
+      console.log(err)
       if (!err?.response) {
         setErrMsg("서버로부터 응답이 없습니다");
       } else if (err.response?.status === 400) {
