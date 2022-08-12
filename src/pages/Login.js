@@ -1,30 +1,38 @@
 import "./Login.css";
 import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/container";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  Route,
+  Routes,
+} from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
+import Register from "./register";
 
-import useAuth from "./../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
 
 const Login = () => {
+<<<<<<< HEAD
   const setAuth  = useAuth();
 
+=======
+  const { setAuth } = useAuth();
+>>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const errRef = useRef();
-
+  const userIdRef = useRef();
 
   const [user, setUser] = useState();
   const [pwd, setPwd] = useState();
   const [errMsg, setErrMsg] = useState("");
 
-
   const errorAlerterRef = useRef();
-
-  const userIdRef = useRef();
 
   useEffect(() => {
     userIdRef.current.focus();
@@ -37,27 +45,34 @@ const Login = () => {
   // 로그인 제출 함수
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(typeof setAuth);
 
     try {
       const response = await axios.post(
         "http://3.39.181.250/accounts/login/",
+<<<<<<< HEAD
         JSON.stringify({"username":"", email:user, password:pwd}),
+=======
+        JSON.stringify({ username: "", email: user, password: pwd }),
+>>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: true
+          withCredentials: true,
         }
-      )
+      );
 
       const accessToken = response?.data?.access_token;
+<<<<<<< HEAD
       setAuth({ user, pwd, accessToken });
       
+=======
+      setAuth({ user: user, pwd: pwd, accessToken: accessToken });
+>>>>>>> b62ba7c35a86786db3af27b9bad8680bce05ae6a
       setUser("");
       setPwd("");
       navigate(from, { replace: true });
-
     } catch (err) {
-      
-      console.log(err)
+      console.log(err);
       if (!err?.response) {
         setErrMsg("서버로부터 응답이 없습니다");
       } else if (err.response?.status === 400) {
@@ -103,79 +118,93 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <div className="login_Wrapper">
-        <header>
-          <Link to={"/"}>
-            <h1>
-              <img src="./img/logo.png" alt="petpe_logo" />
-            </h1>
-          </Link>
-        </header>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Container>
+              <div className="login_Wrapper">
+                <header>
+                  <Link to={"/"}>
+                    <h1>
+                      <img src="../img/logo.png" alt="petpe_logo" />
+                    </h1>
+                  </Link>
+                </header>
 
-        <form method="post" action="#">
-          <div className="input_wrapper">
-            <input
-              ref={userIdRef}
-              type="text"
-              name="email"
-              id="email"
-              placeholder="이메일주소를 입력해 주세요"
-              autoComplete="username"
-              onChange={handleId}
-            />
-          </div>
-          <div className="input_wrapper">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="비밀번호를 입력해주세요"
-              autoComplete="current-password"
-              onChange={handlePw}
-            />
-          </div>
-          <div className="LoginOptionWrap">
-            <div id="keepLoginOption">
-              <input type="checkbox" name="keepLoginCheckBox" />
-              <label
-                htmlFor="keepLoginCheckBox"
-                id="keepLoginLabel"
-                className="fontgray"
-              >
-                자동 로그인
-              </label>
-            </div>
-            <div id="registerOptionWrap">
-              <span id="findUserID" className="fontgray">
-                ID/PW 찾기
-              </span>
-              <span id="signUp" className="font_deep_brown bold">
-                회원가입
-              </span>
-            </div>
-          </div>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-          <div id="errorAlerter" ref={errorAlerterRef}></div>
+                <form method="post" action="#">
+                  <div className="input_wrapper">
+                    <input
+                      ref={userIdRef}
+                      type="text"
+                      name="email"
+                      id="email"
+                      placeholder="이메일주소를 입력해 주세요"
+                      autoComplete="username"
+                      onChange={handleId}
+                    />
+                  </div>
+                  <div className="input_wrapper">
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="비밀번호를 입력해주세요"
+                      autoComplete="current-password"
+                      onChange={handlePw}
+                    />
+                  </div>
+                  <div className="LoginOptionWrap">
+                    <div id="keepLoginOption">
+                      <input type="checkbox" name="keepLoginCheckBox" />
+                      <label
+                        htmlFor="keepLoginCheckBox"
+                        id="keepLoginLabel"
+                        className="fontgray"
+                      >
+                        자동 로그인
+                      </label>
+                    </div>
+                    <div id="registerOptionWrap">
+                      <span id="findUserID" className="fontgray">
+                        ID/PW 찾기
+                      </span>
+                      <Link
+                        to="/login/register"
+                        id="signUp"
+                        className="font_deep_brown bold"
+                      >
+                        회원가입
+                      </Link>
+                    </div>
+                  </div>
+                  <p
+                    ref={errRef}
+                    className={errMsg ? "errmsg" : "offscreen"}
+                    aria-live="assertive"
+                  >
+                    {errMsg}
+                  </p>
+                  <div id="errorAlerter" ref={errorAlerterRef}></div>
 
-          {/* 조건부 링크 */}
+                  {/* 조건부 링크 */}
+                  <ButtonLarge
+                    as="input"
+                    type="submit"
+                    className={user && pwd ? "" : "disabled"}
+                    value="로그인"
+                    onClick={handleSubmit}
+                  ></ButtonLarge>
+                </form>
+              </div>
+            </Container>
+          }
+        />
 
-          <ButtonLarge
-            as="input"
-            type="submit"
-            className={user && pwd ? "" : "disabled"}
-            value="로그인"
-            onClick={handleSubmit}
-          ></ButtonLarge>
-        </form>
-      </div>
-    </Container>
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </>
   );
 };
 

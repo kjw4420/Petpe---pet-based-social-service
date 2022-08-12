@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import MiniButton from "../components/minibutton";
 import "./Place.css";
+import TopHeader from "../components/TopHeader";
+import { RadioNavigater } from "../components/globalComponent";
 
 
 const Place = () => {
   return (
     <>
+    <TopHeader/>
+    <RadioNavigater/>
       <div className="place_wrapper">
         <div className="search_box">
           <input type="text" className="search" placeholder=" 검색" />

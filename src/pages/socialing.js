@@ -3,7 +3,9 @@ import "./socialing.css";
 import MiniButton from "../components/minibutton";
 import { Routes, Route } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
-import ButtonLarge, { StyledInput } from "../components/globalComponent";
+import ButtonLarge, { RadioNavigater, StyledInput } from "../components/globalComponent";
+import TopHeader from "../components/TopHeader";
+
 
 const Socialing = () => {
   const [socialPost, setSocialPost] = useState(dummyDataForSocial);
@@ -15,6 +17,8 @@ const Socialing = () => {
           path="/"
           element={
             <>
+            <TopHeader/>
+            <RadioNavigater/>
               <div className="social_wrapper">
                 <div className="search_box">
                   <input type="text" className="search" placeholder=" 검색" />
