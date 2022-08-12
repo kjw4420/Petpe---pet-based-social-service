@@ -9,7 +9,6 @@ const option = () => {
                 <Link to="/profile">
                 <img src="./img/back.png" alt="뒤로가기" className="optionHeaderback"></img>
                 </Link>
-
                 <span className="optionHeadername h3 bold">설정</span>
             </div>
             <div className="profileNamecard">
@@ -24,10 +23,12 @@ const option = () => {
                 </div>
             </div>
             <div className="optionMenu">
+                <Link to="/ProfileEdit">
                 <div className="profileEditor">
                     <img src="./img/profile_icon.png" alt="프로필편집" className="profileEdit"></img>
                     프로필편집
                 </div>
+                </Link>
                 <div className="account">
                     <img src="./img/account.png" width="24px" alt="계정" className="accountEdit"></img>
                     계정

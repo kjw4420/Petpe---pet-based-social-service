@@ -30,7 +30,7 @@
     border: 1px solid var(--font-light-gray);
     border-right: 1px solid var(--main-deep-brown);
     height: 110px;
-    border-radius: 5px;
+    border-radius: 5px; 
     margin: 20px;
 
 }
@@ -49,6 +49,7 @@
     width: 50px;
     height: 100%;
     background-color: var(--main-deep-brown);
+    border-radius: 5px;
 }
 .Whiteholediv{
     width: 13px;

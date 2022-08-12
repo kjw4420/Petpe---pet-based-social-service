@@ -8,7 +8,7 @@ import useAuth from "./../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const setAuth  = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,13 +35,13 @@ const Login = () => {
   }, [user, pwd]);
 
   // 로그인 제출 함수
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
         "http://3.39.181.250/accounts/login/",
-        JSON.stringify({"username":"",email:user,password:pwd}),
+        JSON.stringify({"username":"", email:user, password:pwd}),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true
@@ -51,7 +51,6 @@ const Login = () => {
       const accessToken = response?.data?.access_token;
       setAuth({ user, pwd, accessToken });
       
-
       setUser("");
       setPwd("");
       navigate(from, { replace: true });
