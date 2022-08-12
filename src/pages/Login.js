@@ -1,5 +1,5 @@
 import "./Login.css";
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/container";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import ButtonLarge from "../components/globalComponent";
@@ -13,9 +13,9 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [user, setUser] = useState(false);
-  const [pwd, setPwd] = useState(false);
-  const [errMsg, setErrMsg] = useState('');
+  const [user, setUser] = useState();
+  const [pwd, setPwd] = useState();
+  const [errMsg, setErrMsg] = useState("");
   const errRef = useRef();
 
   const errorAlerterRef = useRef();
@@ -25,45 +25,45 @@ const Login = () => {
     userIdRef.current.focus();
   }, []);
 
-
   useEffect(() => {
-    setErrMsg('');
-}, [user, pwd])
+    setErrMsg("");
+  }, [user, pwd]);
 
   // 로그인 제출 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-        const response = await axios.post("http://3.39.181.250/accounts/login/",
-            JSON.stringify({ user, pwd }),
-            {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
-            }
-        );
-        console.log(JSON.stringify(response?.data));
-        console.log(JSON.stringify(response));
-        const accessToken = response?.data?.accessToken;
-        const roles = response?.data?.roles;
-        setAuth({ user, pwd, roles, accessToken });
-        setUser('');
-        setPwd('');
-        navigate(from, { replace: true });
-    } catch (err) {
-        if (!err?.response) {
-            setErrMsg('No Server Response');
-        } else if (err.response?.status === 400) {
-            setErrMsg('Missing Username or Password');
-        } else if (err.response?.status === 401) {
-            setErrMsg('Unauthorized');
-        } else {
-            setErrMsg('Login Failed');
+      const response = await axios.post(
+        "http://3.39.181.250/accounts/login/",
+        JSON.stringify({"username":"",email:user,password:pwd}),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true
         }
-        errRef.current.focus();
-    }
-}
+      );
+      
+      console.log(JSON.stringify(response?.data));
+      // console.log(JSON.stringify(response));
+      const accessToken = response?.data?.access_Token;
+      setAuth({ user, pwd, accessToken:accessToken });
 
+      setUser("");
+      setPwd("");
+      navigate(from, { replace: true });
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("서버로부터 응답이 없습니다");
+      } else if (err.response?.status === 400) {
+        setErrMsg("이메일 또는 패스워드를 확인해주세요");
+      } else if (err.response?.status === 401) {
+        setErrMsg("허가되지않은 접근입니다");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
+    }
+  };
 
   // 유효성검사함수
   const handleId = (e) => {
@@ -72,7 +72,7 @@ const Login = () => {
     // 형식에 맞는 경우 true 리턴
     if (email.test(e.target.value)) {
       errorAlerterRef.current.textContent = "";
-      setUser(true);
+      setUser(e.target.value);
     } else {
       errorAlerterRef.current.textContent = "올바른 이메일을 입력해주세요";
       setUser(false);
@@ -86,9 +86,8 @@ const Login = () => {
     // 형식에 맞는 경우 true 리턴
     if (password.test(e.target.value)) {
       errorAlerterRef.current.textContent = "";
-
       //비번이 맞을시, pw검사 state를 true로
-      setPwd(true);
+      setPwd(e.target.value);
     } else {
       errorAlerterRef.current.textContent = "8자리 이상의 영문, 숫자, 특수문자";
 
@@ -150,20 +149,24 @@ const Login = () => {
               </span>
             </div>
           </div>
-          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
           <div id="errorAlerter" ref={errorAlerterRef}></div>
-          
 
           {/* 조건부 링크 */}
 
-            <ButtonLarge
-              as="input"
-              type="submit"
-              className={user && pwd ? "" : "disabled"}
-              value="로그인"
-              onClick={handleSubmit}
-            ></ButtonLarge>
-
+          <ButtonLarge
+            as="input"
+            type="submit"
+            className={user && pwd ? "" : "disabled"}
+            value="로그인"
+            onClick={handleSubmit}
+          ></ButtonLarge>
         </form>
       </div>
     </Container>

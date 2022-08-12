@@ -4,7 +4,6 @@ import TopHeader from '../components/TopHeader';
 const Layout = ()=>{
   return(
     <main>
-      <TopHeader/>
       <Outlet/>
     </main>
   )

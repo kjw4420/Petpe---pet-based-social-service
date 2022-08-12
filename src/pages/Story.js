@@ -1,15 +1,43 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../node_modules/axios/index";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
+  const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [story, setStory] = useState([]);
   useEffect(() => {
+  //   let isMounted = true;
+  //   const controller = new AbortController();
+
+  //   const getStory = async () => {
+  //     try {
+  //         const response = await axiosPrivate.get('/users', {
+  //             signal: controller.signal
+  //         });
+  //         console.log(response.data);
+  //         isMounted && setStory(response.data);
+  //     } catch (err) {
+  //         console.error(err);
+  //         navigate('/login', { state: { from: location }, replace: true });
+  //     }
+  // }
+
+  // getStory();
+
+  // return () => {
+  //     isMounted = false;
+  //     controller.abort();
+  // }
+
     axios.get("http://3.39.181.250/story")
     .then((response) => {
       setStory(response.data);

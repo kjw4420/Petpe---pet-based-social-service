@@ -8,7 +8,6 @@ import Socialing from "./pages/socialing";
 import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
 import Place from "./pages/place";
-import axios from "../node_modules/axios/index";
 import Layout from "./pages/Layout";
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
       <Route element={<RequireAuth />}>
         <Route path="/profile" element={<Profile />} />
       </Route>
-      
+
       {/* catch up (오류) */}
       <Route path="*" element={<WrongPage />} />
     </Routes>
