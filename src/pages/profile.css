@@ -1,0 +1,89 @@
+.profileWrapper{
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    margin: auto;
+}
+.profileHeader{
+    display: flex;
+    width:470px;
+    height: 70px;
+}
+.headerLogo{
+    width: 110px;
+    
+    margin: 15px 15px;
+}
+.headerIcon{
+    display: flex;
+    margin : 15px 0px;
+    margin-left: auto;
+}
+.headerAlert{
+    margin:10px;
+    cursor: pointer;
+}
+.headerCalender{
+    margin: 10px;
+    cursor: pointer;
+}
+.options{
+    margin: 10px;
+    cursor: pointer;
+}
+.profileCard{
+    display: flex;
+}
+.profileImage{
+    margin: 25px;
+}
+.profileInfo{
+    
+    padding: 20px;
+}
+.userInfo{
+    display: flex;
+    height: 40px;
+    margin: 20px 20px;
+}
+.posting{
+    margin: auto 0px;
+}
+.follower{
+    margin: auto 30px;
+}
+.following{
+    margin: auto 0px;
+}
+.Writting{
+    margin-top: 7.5px;
+    margin-left: auto;
+    
+    width:70px;
+    height: 25px;
+    color: var(--font-gray);
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid var(--font-gray);
+}
+.presentpicture{
+    margin: 70px 20px;
+    
+}
+.presentGallery{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.exPicture{
+    border-radius: 5px;
+    width:215px;
+    height: 215px;
+    margin: 10px;
+}
+.exPicture2{
+    width:105px;
+    height: 105px;
+    margin: 10px;
+    border-radius: 5px;
+}
