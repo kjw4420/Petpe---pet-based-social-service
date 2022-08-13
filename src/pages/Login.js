@@ -65,7 +65,6 @@ const Login = () => {
       
 
       setAuth({ user: user, pwd: pwd, accessToken: accessToken });
-
       setUser("");
       setPwd("");
       navigate(from, { replace: true });

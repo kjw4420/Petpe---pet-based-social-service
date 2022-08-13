@@ -72,7 +72,7 @@ export const PlaceElement = () => {
           className="info_profile"
         />
         <div className="place_info">
-            <span className="place_name h2">댕댕병원</span>
+            <span className="place_name h4">댕댕병원</span>
             <div className="place_grade">
               <div className="grade">
                 <img src="./img/rate.png" alt="평점" className="rate_img"/>

@@ -169,14 +169,14 @@ export const SocialingElement = (props) => {
         className="chatting_profile"
       />
       <div className="chatting_title">
-        <span className="h4">{props.title}</span>
-        <span className="h5">{props.date}</span>
+        <span className={props.participant.length!==props.maxParticipant?"p bold":"p bold font_light_gray"}>{props.title}</span>
+        <span className="h5 fontgray">{props.date}</span>
         <span className="h5 fontgray">{props.location}</span>
-        <span className="p fontgray">
+        <span className="h5 fontgray">
           {/* {props.maxParticipant - props.participant.length > 0
             ? `${props.maxParticipant - props.participant.length}명 참여가능`
             : "마감된 소셜링"} */}
-          {`${props.participant.length}명 / ${props.maxParticipant}명`}
+          {`${props.participant.length}/${props.maxParticipant}`}
         </span>
       </div>
     </div>

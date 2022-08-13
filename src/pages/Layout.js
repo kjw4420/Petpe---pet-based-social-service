@@ -1,5 +1,4 @@
 import { Outlet } from "../../node_modules/react-router-dom/index";
-import TopHeader from '../components/TopHeader';
 
 const Layout = ()=>{
   return(
