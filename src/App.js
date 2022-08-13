@@ -2,6 +2,7 @@ import React, { useState, useEffect, ReactDOM } from "react";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./pages/RequireAuth";
 import { WrongPage, RadioNavigater } from "./components/globalComponent";
+
 import Login from "./pages/Login";
 import Story from "./pages/Story";
 import Socialing from "./pages/socialing";

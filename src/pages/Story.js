@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../node_modules/axios/index";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TopHeader from "../components/TopHeader";
 import { RadioNavigater } from "../components/globalComponent";
@@ -17,31 +17,30 @@ const Story = () => {
 
   const [story, setStory] = useState([]);
   useEffect(() => {
-  //   let isMounted = true;
-  //   const controller = new AbortController();
+    //   let isMounted = true;
+    //   const controller = new AbortController();
 
-  //   const getStory = async () => {
-  //     try {
-  //         const response = await axiosPrivate.get('/users', {
-  //             signal: controller.signal
-  //         });
-  //         console.log(response.data);
-  //         isMounted && setStory(response.data);
-  //     } catch (err) {
-  //         console.error(err);
-  //         navigate('/login', { state: { from: location }, replace: true });
-  //     }
-  // }
+    //   const getStory = async () => {
+    //     try {
+    //         const response = await axiosPrivate.get('/story', {
+    //             signal: controller.signal
+    //         });
+    //         console.log(response.data);
+    //         isMounted && setStory(response.data);
+    //     } catch (err) {
+    //         console.error(err);
+    //         navigate('/login', { state: { from: location }, replace: true });
+    //     }
+    // }
 
-  // getStory();
+    // getStory();
 
-  // return () => {
-  //     isMounted = false;
-  //     controller.abort();
-  // }
+    // return () => {
+    //     isMounted = false;
+    //     controller.abort();
+    // }
 
-    axios.get("http://3.39.181.250/story")
-    .then((response) => {
+    axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
     });
   }, []);
@@ -54,10 +53,9 @@ const Story = () => {
   };
 
   return (
-    
     <>
-    <TopHeader/>
-    <RadioNavigater/>
+      <TopHeader />
+      <RadioNavigater />
       <section className="storyWrapper">
         {story.map((props) => {
           return StoryEle(props);
@@ -73,23 +71,18 @@ export const StoryEle = (props) => {
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
         <div className="userProfile-sm">
-          <img
-            src={props.userimage}
-            alt={props.userName + "의 프로필사진"}
-          />
+          <img src={props.userimage} alt={props.userName + "의 프로필사진"} />
           <div>
             <span className="p">
-              {props.useremail.substr(0,props.useremail.indexOf("@"))}
+              {props.useremail.substr(0, props.useremail.indexOf("@"))}
             </span>
-            <span className="h5 fontgray">
-              {props.username}
-            </span>
+            <span className="h5 fontgray">{props.username}</span>
           </div>
         </div>
       </div>
       <div className="imgWrapper">
         <Slider
-          key = {"slider"+props.id}
+          key={"slider" + props.id}
           dots={true}
           infinite={true}
           speed={300}
@@ -99,7 +92,11 @@ export const StoryEle = (props) => {
         >
           {props.pictures.map((e) => {
             return (
-                <img src={e.picture} alt={props.username+"의 사진"} key={props.pictures.indexOf(e)}/>
+              <img
+                src={e.picture}
+                alt={props.username + "의 사진"}
+                key={props.pictures.indexOf(e)}
+              />
             );
           })}
         </Slider>
@@ -124,12 +121,12 @@ export const StoryEle = (props) => {
         <span className="liked">junguZzang 외 6명</span>
         <span className="content">{props.content}</span>
         <span className="taggedUser h5">{props.hashTag}</span>
-        <span className="postedDate h5">
+        <input type="text" placeholder="댓글을 입력하세요" />
+        <span className="postedDate h5 fontgray">
           {new Date(props.createdAt).toLocaleDateString()}
         </span>
       </div>
     </div>
-
   );
 };
 

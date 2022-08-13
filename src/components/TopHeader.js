@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const HeaderWrapper = styled.nav`
   width: 100%;
-  padding: 20px;
+  padding: 20px 13%;
   border-bottom: 1px solid var(--line-gray);
   display: flex;
   justify-content: space-between;
@@ -30,7 +30,9 @@ const TopHeader = () => {
       </Link>
       <ImgElement>
         <img src="./img/search_icon.png" alt="검색아이콘" />
+        <Link to="/profile">
         <img src="./img/profile_icon.png" alt="프로필아이콘" />
+        </Link>
       </ImgElement>
     </HeaderWrapper>
   );
