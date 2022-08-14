@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
 import ButtonLarge, { RadioNavigater, StyledInput } from "../components/globalComponent";
 import TopHeader from "../components/TopHeader";
+import App from './../App';
 
 
 const Socialing = () => {
@@ -41,10 +42,11 @@ const NewSocialing = () => {
   return (
     <>
       <section className="social_wrapper">
-        <ChooseNewCategory />
+        {/* <ChooseNewCategory />
         <TypeNewTitle /> 
         <TypeNewDetail />
-        <TypeNewTime />
+        <TypeNewTime /> */}
+        <SelectType/>
       </section>
     </>
   );
@@ -127,13 +129,12 @@ const TypeNewDetail = () => {
         }}
         placeholder="소셜링 내용을 입력해주세요"
       />
-
       <div className="input_length_counter"></div>
       <ButtonLarge className={typedDetail ? "" : "disabled"}>다음</ButtonLarge>
     </PaddingWrap>
   );
 };
-// =====================내용작성
+// =====================날짜선택
 const TypeNewTime = () => {
   const [typedTime, setTypedTime] = useState();
   const [typedDate, setTypedDate] = useState();
@@ -152,9 +153,33 @@ const TypeNewTime = () => {
           setTypedTime(e.target.value);
         }}
       />
-
       <div className="input_length_counter"></div>
       <ButtonLarge className={typedTime&&typedDate ? "" : "disabled"}>다음</ButtonLarge>
+    </PaddingWrap>
+  );
+};
+// =====================날짜선택
+const SelectType = () => {
+  const [selectedType, setSelectedType] = useState();
+
+  return (
+    <PaddingWrap>
+      <span className="h4 newsocial_title">어디서 만날까요?</span>
+      <input
+        type="button"
+        onClick={(e) => {
+          setSelectedType("online");
+        }}
+        value="온라인"
+      />
+      <input
+        type="button"
+        onClick={(e) => {
+          setSelectedType("offline");
+        }}value="오프라인"
+      />
+      <div className="input_length_counter"></div>
+      <ButtonLarge className={selectedType ? "" : "disabled"}>다음</ButtonLarge>
     </PaddingWrap>
   );
 };
@@ -166,7 +191,7 @@ export const SocialingElement = (props) => {
       <img
         src={props.img}
         alt={`${props.title} 대표 이미지`}
-        className="chatting_profile"
+        className={props.participant.length===props.maxParticipant?"chatting_profile opacity-50":"chatting_profile"}
       />
       <div className="chatting_title">
         <span className={props.participant.length!==props.maxParticipant?"p bold":"p bold font_light_gray"}>{props.title}</span>
