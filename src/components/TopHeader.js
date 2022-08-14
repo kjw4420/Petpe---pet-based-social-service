@@ -29,7 +29,7 @@ const TopHeader = () => {
         </LogoElement>
       </Link>
       <ImgElement>
-        <img src="./img/search_icon.png" alt="검색아이콘" />
+        {/* <img src="./img/search_icon.png" alt="검색아이콘" /> */}
         <Link to="/profile">
         <img src="./img/profile_icon.png" alt="프로필아이콘" />
         </Link>
