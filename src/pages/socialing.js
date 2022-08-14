@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
 import ButtonLarge, { RadioNavigater, StyledInput } from "../components/globalComponent";
 import TopHeader from "../components/TopHeader";
-import App from './../App';
 
 
 const Socialing = () => {
@@ -18,7 +17,7 @@ const Socialing = () => {
           path="/"
           element={
             <>
-            <TopHeader/>
+            <TopHeader type="3" name="소셜링" />
             <RadioNavigater/>
               <div className="social_wrapper">
                 <div className="search_box">
@@ -38,7 +37,7 @@ const Socialing = () => {
   );
 };
 
-const NewSocialing = () => {
+const NewSocialing = (user) => {
   return (
     <>
       <section className="social_wrapper">

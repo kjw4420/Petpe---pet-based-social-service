@@ -103,4 +103,10 @@ a.active>div{
   padding: 7px;
   padding-left: 0;
 }
+.comment_input{
+  border: 1px solid var(--line-gray);
+}
 
+/* .storyComment>span{
+  line-height: 0.8rem;
+} */

@@ -71,8 +71,8 @@ export const StyledInput = styled.input`
 export const WrongPage = () => {
   return (
     <WrongPageWrapper>
-      <TopHeader></TopHeader>
-      <Link to="/">h2</Link>
+      <TopHeader type="1"></TopHeader>
+      <Link to="/">홈으로 가기</Link>
     </WrongPageWrapper>
   );
 };

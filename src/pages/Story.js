@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import {
+  useNavigate,
+  useLocation,
+  Route,
+  Routes,
+  Link,
+} from "react-router-dom";
+
 import axios from "../../node_modules/axios/index";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,10 +18,7 @@ import { RadioNavigater } from "../components/globalComponent";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
-  const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
-  const location = useLocation();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [story, setStory] = useState([]);
   useEffect(() => {
     //   let isMounted = true;
@@ -39,41 +43,53 @@ const Story = () => {
     //     isMounted = false;
     //     controller.abort();
     // }
-
+    setIsLoading(true);
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
+      setIsLoading(false);
     });
   }, []);
 
   // 새로고침용 함수
   const updateStories = () => {
+    setIsLoading(true);
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
+      setIsLoading(false);
     });
   };
 
   return (
-    <>
-      <TopHeader />
-      <RadioNavigater />
-      <section className="storyWrapper">
-        {story.map((props) => {
-          return StoryEle(props);
-        })}
-        <button onClick={updateStories}>더보기</button>
-      </section>
-    </>
+    <Routes path="/">
+      <Route
+        path="/"
+        element={
+          <>
+            <TopHeader type="3" callBackImg="profile_icon" />
+            <RadioNavigater />
+            <section className="storyWrapper">
+              {story.map((props) => {
+                return StoryEle(props);
+              })}
+              <button onClick={updateStories}>더보기</button>
+            </section>
+          </>
+        }
+      />
+      <Route path="/story/:id" element={<section>동적으로 생성된페이지3</section>} />
+    </Routes>
   );
 };
 
 export const StoryEle = (props) => {
+  console.log(props);
   return (
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
         <div className="userProfile-sm">
-          <img src={props.userimage} alt={props.userName + "의 프로필사진"} />
+          <img src={props.userimage} alt={props.username + "의 프로필사진"} />
           <div>
-            <span className="p">
+            <span className="p bold">
               {props.useremail.substr(0, props.useremail.indexOf("@"))}
             </span>
             <span className="h5 fontgray">{props.username}</span>
@@ -118,11 +134,32 @@ export const StoryEle = (props) => {
         </div>
       </div>
       <div className="storyDetailWrapper">
-        <span className="liked">junguZzang 외 6명</span>
-        <span className="content">{props.content}</span>
-        <span className="taggedUser h5">{props.hashTag}</span>
-        <input type="text" placeholder="댓글을 입력하세요" />
-        <span className="postedDate h5 fontgray">
+        {/* <span className="story_liked h5">junguZzang 외 6명</span> */}
+        <span className="story_content">
+          <span className="xbold mr-5">{props.username}</span>
+          {props.content}
+        </span>
+        <div className="story_comments_wrapper">
+          {props.comments.length !== 0 ? (
+            <div className="storyComment" key={props.comments[0].id}>
+              <Link to={`/story/${props.id}`}>
+                <span className="h5 fontgray">
+                  {`댓글 ${props.comments.length}개 모두 보기`}
+                  <br />
+                </span>
+              </Link>
+              <span className="mr-10 xbold p">
+                {props.comments[0].author_username}
+              </span>
+              <span className="storyContent p">{props.comments[0].text}</span>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+        <span className="storyComment h5">{props.comments.text}</span>
+        <input type="text" className="mt-5" placeholder="댓글을 입력하세요" />
+        <span className="postedDate h5 fontgray mt-5">
           {new Date(props.createdAt).toLocaleDateString()}
         </span>
       </div>

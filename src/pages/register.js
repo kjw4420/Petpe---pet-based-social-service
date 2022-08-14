@@ -36,11 +36,11 @@ const Register = () => {
   // 회원가입 제출 함수
   const handleJoin = async (e) => {
     e.preventDefault();
-    console.log([userNickname,userEmail,pword,pwordcheck])
+    console.log({ username: userNickname, email: userEmail, password1: pword, password2: pword, userimage:null})
     try {
       await axios.post(
         "http://3.39.181.250/accounts/registration/",
-        JSON.stringify({ Userame: userNickname, Email: userEmail, Password1: pword, Password2: pword, Userimage:""}),
+        JSON.stringify({ username: userNickname, email: userEmail, password1: pword, password2: pword, userimage:null}),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,

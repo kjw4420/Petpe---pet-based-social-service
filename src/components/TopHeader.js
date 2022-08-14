@@ -1,41 +1,89 @@
-import React from "react";
+import { React, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const HeaderWrapper = styled.nav`
+const HeaderLine = styled.header`
+  width: 100%;
+  border-bottom: 1px solid var(--line-gray);
+`;
+const HeaderWrapper = styled.div`
+  margin: 0 auto;
   width: 100%;
   padding: 20px 13%;
-  border-bottom: 1px solid var(--line-gray);
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    padding: 20px;
+  }
 `;
-export const LogoElement = styled.div`
-  display: block;
-  cursor: pointer;
+const IconWrapper = styled.div`
+cursor: pointer;
+  width: 70px;
 `;
-export const ImgElement = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+const IconImg = styled.img`
+  height: 32px;
+  object-fit: cover;
+  float: right;
 `;
 
-const TopHeader = () => {
-  return (
-    <HeaderWrapper>
-      <Link to="/">
-        <LogoElement>
-          <img src="./img/Petpe_small.png" alt="로고" className="header_logo" />
-        </LogoElement>
-      </Link>
-      <ImgElement>
-        {/* <img src="./img/search_icon.png" alt="검색아이콘" /> */}
-        <Link to="/profile">
-        <img src="./img/profile_icon.png" alt="프로필아이콘" />
-        </Link>
-      </ImgElement>
-    </HeaderWrapper>
-  );
+// 타입에는 헤더갯수에 따라 1,2,3 이 있음 / name 은 상단에 표시되는이름 / callback은 우측 아이콘 클릭시 동작
+const TopHeader = ({ type, name, callBack, callBackType="img" ,callBackImg="plus",callBackText="" }) => {
+  if (type === "3") {
+    return (
+      <HeaderLine>
+        <HeaderWrapper>
+          <Link to="/">
+            <img
+              src="./img/Petpe_small.png"
+              alt="로고"
+              className="header_logo"
+            />
+          </Link>
+          <span className="h3 xbold">{name}</span>
+          <IconWrapper onClick={callBack}>
+            {callBackType==="text"?<IconImg as="span">{callBackText}</IconImg>:<IconImg src={`../../img/${callBackImg}.png`} alt="새 글쓰기" />}
+            
+          </IconWrapper>
+        </HeaderWrapper>
+      </HeaderLine>
+    );
+  } else if (type === "2") {
+    return (
+      <HeaderLine>
+        <HeaderWrapper>
+          <Link to="/">
+            <img
+              src="./img/Petpe_small.png"
+              alt="로고"
+              className="header_logo"
+            />
+          </Link>
+          <span className="h3 xbold">{name}</span>
+          <IconWrapper></IconWrapper>
+        </HeaderWrapper>
+      </HeaderLine>
+    );
+  } else if (type === "1") {
+    return (
+      <HeaderLine>
+        <HeaderWrapper>
+          <Link to="/">
+            <img
+              src="./img/Petpe_small.png"
+              alt="로고"
+              className="header_logo"
+            />
+          </Link>
+        </HeaderWrapper>
+      </HeaderLine>
+    );
+  }
 };
 
 export default TopHeader;

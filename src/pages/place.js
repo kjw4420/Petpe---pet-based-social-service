@@ -8,7 +8,7 @@ import { RadioNavigater } from "../components/globalComponent";
 const Place = () => {
   return (
     <>
-    <TopHeader/>
+    <TopHeader type="2" name="플레이스"/>
     <RadioNavigater/>
       <div className="place_wrapper">
         <div className="search_box">
