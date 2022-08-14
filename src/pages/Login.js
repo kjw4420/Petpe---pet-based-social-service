@@ -40,7 +40,6 @@ const Login = () => {
   // 로그인 제출 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(typeof setAuth);
 
     try {
       const response = await axios.post(
@@ -59,7 +58,6 @@ const Login = () => {
       setPwd("");
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
       if (!err?.response) {
         setErrMsg("서버로부터 응답이 없습니다");
       } else if (err.response?.status === 400) {
@@ -150,7 +148,7 @@ const Login = () => {
                         id="keepLoginLabel"
                         className="fontgray"
                       >
-                        자동 로그인
+                        이메일 저장
                       </label>
                     </div>
                     <div id="registerOptionWrap">
