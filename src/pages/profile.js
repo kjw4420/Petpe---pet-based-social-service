@@ -3,6 +3,7 @@ import Container from "../components/container";
 import { Link } from "react-router-dom";
 import "./profile.css";
 
+
 const Profile = () => {
   return (
     <>
@@ -10,10 +11,10 @@ const Profile = () => {
       <div className="profileHeader">
         <img src="./img/Petpe_small.png" alt="로고" className="headerLogo"/>
         <div className="headerIcon">
-          <img src="./img/alert.png" alt="알림"className="headerAlert"/>
+          <img src="./img/alert.png" alt="알림" className="headerAlert"/>
           <img src="./img/calender.png" alt="캘린더" className="headerCalender"/>
           <Link to="/option">
-          <img src="./img/option.png" alt="설정" className="options"/> 
+            <img src="./img/option.png" alt="설정" className="options"/> 
           </Link>
         </div>
       </div>

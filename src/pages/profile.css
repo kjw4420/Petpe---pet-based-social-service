@@ -8,27 +8,25 @@
     display: flex;
     width:470px;
     height: 70px;
+    padding: 20px;
 }
 .headerLogo{
-    width: 110px;
     
-    margin: 15px 15px;
 }
 .headerIcon{
     display: flex;
-    margin : 15px 0px;
+    
     margin-left: auto;
 }
 .headerAlert{
-    margin:10px;
+    
     cursor: pointer;
 }
 .headerCalender{
-    margin: 10px;
+    
     cursor: pointer;
 }
 .options{
-    margin: 10px;
     cursor: pointer;
 }
 .profileCard{
@@ -58,13 +56,13 @@
 .Writting{
     margin-top: 7.5px;
     margin-left: auto;
-    
     width:70px;
     height: 25px;
     color: var(--font-gray);
     background-color: #fff;
     border-radius: 15px;
     border: 1px solid var(--font-gray);
+    cursor: pointer;
 }
 .presentpicture{
     margin: 70px 20px;

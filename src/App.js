@@ -12,6 +12,9 @@ import Place from "./pages/place";
 import Layout from "./pages/Layout";
 import Option from "./pages/option";
 
+
+
+
 function App() {
   return (
     <Routes path="/" element={<Layout />}>
@@ -23,6 +26,7 @@ function App() {
       <Route path="/Place" element={<Place />} />
       <Route path="/Option" element={<Option />} />
       <Route path="/profile" element={<Profile />} />
+      
 
       {/* need to protect */}
       <Route element={<RequireAuth />}>
