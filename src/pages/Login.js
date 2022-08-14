@@ -15,7 +15,6 @@ import useAuth from "../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
 
 const Login = () => {
-  const setAuth  = useAuth();
   
   const { setAuth } = useAuth();
 
