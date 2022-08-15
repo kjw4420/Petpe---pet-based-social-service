@@ -10,7 +10,7 @@ import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
 import Place from "./pages/place";
 import Layout from "./pages/Layout";
-
+import Newsocialing from "./pages/socialing"
 function App() {
   return (
     <Routes path="/" element={<Layout />}>

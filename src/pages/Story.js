@@ -43,7 +43,7 @@ const Story = () => {
         path="/"
         element={
           <>
-            <TopHeader type="3" callBackImg="profile_icon" />
+            <TopHeader type="3" callBackImg="profile_icon" URL="/profile"/>
             <RadioNavigater />
             <section className="storyWrapper">
               {story.map((props) => {
@@ -138,7 +138,7 @@ export const StoryEle = (props) => {
             </Link>
           )}
         </div>
-        <span className="storyComment h5">{props.comments.text}</span>
+        {/* <span className="storyComment h5">{props.comments.text}</span> */}
         <input type="text" className="mt-5" placeholder="댓글을 입력하세요" />
         <span className="postedDate h5 fontgray mt-5">
           {new Date(props.createdAt).toLocaleDateString()}
