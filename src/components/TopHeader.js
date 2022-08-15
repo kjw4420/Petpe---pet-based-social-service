@@ -22,6 +22,21 @@ const HeaderWrapper = styled.div`
     padding: 20px;
   }
 `;
+const CenterWrapper = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    max-width: 470px;
+    min-width: 330px;
+    padding: 20px;
+  }
+`;
 const IconWrapper = styled.div`
 cursor: pointer;
   width: 70px;
@@ -72,7 +87,7 @@ const TopHeader = ({ type, name, callBack, callBackType="img" ,callBackImg="plus
   } else if (type === "1") {
     return (
       <HeaderLine>
-        <HeaderWrapper>
+        <CenterWrapper>
           <Link to="/">
             <img
               src="./img/Petpe_small.png"
@@ -80,7 +95,7 @@ const TopHeader = ({ type, name, callBack, callBackType="img" ,callBackImg="plus
               className="header_logo"
             />
           </Link>
-        </HeaderWrapper>
+        </CenterWrapper>
       </HeaderLine>
     );
   }

@@ -1,48 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
 import {
-  useNavigate,
-  useLocation,
   Route,
   Routes,
   Link,
 } from "react-router-dom";
-
 import axios from "../../node_modules/axios/index";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TopHeader from "../components/TopHeader";
 import { RadioNavigater } from "../components/globalComponent";
+import StoryDetail from './storydetail';
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
   const [isLoading, setIsLoading] = useState(true);
-  const [story, setStory] = useState([]);
+  const [story, setStory] = useState();
+  const [storyDetail,setStoryDetail] = useState([]);
+  
   useEffect(() => {
-    //   let isMounted = true;
-    //   const controller = new AbortController();
-
-    //   const getStory = async () => {
-    //     try {
-    //         const response = await axiosPrivate.get('/story', {
-    //             signal: controller.signal
-    //         });
-    //         console.log(response.data);
-    //         isMounted && setStory(response.data);
-    //     } catch (err) {
-    //         console.error(err);
-    //         navigate('/login', { state: { from: location }, replace: true });
-    //     }
-    // }
-
-    // getStory();
-
-    // return () => {
-    //     isMounted = false;
-    //     controller.abort();
-    // }
     setIsLoading(true);
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
@@ -51,16 +28,10 @@ const Story = () => {
   }, []);
 
   // 새로고침용 함수
-  const updateStories = () => {
-    setIsLoading(true);
-    axios.get("http://3.39.181.250/story").then((response) => {
-      setStory(response.data);
-      setIsLoading(false);
-    });
-  };
 
+  if (isLoading){return(<TopHeader type="3" callBackImg="profile_icon" />)}
   return (
-    <Routes path="/">
+    <Routes path="/*">
       <Route
         path="/"
         element={
@@ -71,18 +42,16 @@ const Story = () => {
               {story.map((props) => {
                 return StoryEle(props);
               })}
-              <button onClick={updateStories}>더보기</button>
             </section>
           </>
         }
       />
-      <Route path="/story/:id" element={<section>동적으로 생성된페이지3</section>} />
+      <Route path="story/:id" element={<StoryDetail/>} ></Route>
     </Routes>
   );
 };
 
 export const StoryEle = (props) => {
-  console.log(props);
   return (
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
@@ -154,7 +123,12 @@ export const StoryEle = (props) => {
               <span className="storyContent p">{props.comments[0].text}</span>
             </div>
           ) : (
-            <></>
+            <Link to={`/story/${props.id}`}>
+              <span className="h5 fontgray">
+                {`자세히 보기`}
+                <br />
+              </span>
+            </Link>
           )}
         </div>
         <span className="storyComment h5">{props.comments.text}</span>

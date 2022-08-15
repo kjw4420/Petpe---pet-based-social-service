@@ -10,7 +10,6 @@ import TalkTalk from "./pages/talktalk";
 import Profile from "./pages/profile";
 import Place from "./pages/place";
 import Layout from "./pages/Layout";
-import Option from "./pages/option";
 
 function App() {
   return (
@@ -21,6 +20,7 @@ function App() {
       <Route path="/social/*" element={<Socialing />} />
       <Route path="/talktalk/*" element={<TalkTalk />} />
       <Route path="/place/*" element={<Place />} />
+      
 
       {/* need to protect */}
       <Route element={<RequireAuth />}>
