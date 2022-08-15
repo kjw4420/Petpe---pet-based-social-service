@@ -15,7 +15,8 @@ function App() {
   return (
     <Routes path="/" element={<Layout />}>
       {/* public Routes */}
-      <Route path="/*" element={<Story />} />
+      <Route path="/" element={<Story />} />
+      <Route path="/story/*" element={<Story />} />
       <Route path="/login/*" element={<Login />} />
       <Route path="/social/*" element={<Socialing />} />
       <Route path="/talktalk/*" element={<TalkTalk />} />

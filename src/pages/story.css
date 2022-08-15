@@ -115,6 +115,7 @@ a.active > div {
   border-width: 1px 0px;
   border-style: solid;
   border-color: var(--line-gray);
+  height: 530px;
 }
 .story_detail_wrapper {
   flex-direction: row;
@@ -128,10 +129,9 @@ a.active > div {
 .story_deatil_comments_wrapper {
   max-width: 470px;
   min-width: 330px;
-  height: 100%;
+  height: 530px;
 }
-.story_detail_background {
-}
+
 .comment_userProfile {
   float: left;
   width: 24px;
