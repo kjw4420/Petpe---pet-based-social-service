@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TopHeader from "../components/TopHeader";
-import { RadioNavigater } from "../components/globalComponent";
+import { RadioNavigater, WrongPage } from "../components/globalComponent";
 import StoryDetail from './storydetail';
 
 const Story = () => {
@@ -21,17 +21,24 @@ const Story = () => {
   
   useEffect(() => {
     setIsLoading(true);
+    try{
     axios.get("http://3.39.181.250/story").then((response) => {
       setStory(response.data);
       setIsLoading(false);
-    });
+    })}
+    catch(err){
+      setIsLoading("err")
+    }
   }, []);
 
   // 새로고침용 함수
 
   if (isLoading){return(<TopHeader type="3" callBackImg="profile_icon" />)}
+  else if(isLoading==="err"){
+    return(<WrongPage/>)
+  }
   return (
-    <Routes path="/*">
+    <Routes path="/">
       <Route
         path="/"
         element={
@@ -46,7 +53,7 @@ const Story = () => {
           </>
         }
       />
-      <Route path="story/:id" element={<StoryDetail/>} ></Route>
+      <Route path="/:id" element={<StoryDetail/>} ></Route>
     </Routes>
   );
 };
