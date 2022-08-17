@@ -35,10 +35,6 @@ const Login = () => {
   const errorAlerterRef = useRef();
 
   useEffect(() => {
-    userIdRef.current.focus();
-  }, []);
-
-  useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
 
@@ -82,6 +78,7 @@ const Login = () => {
 
   // 유효성검사함수
   const handleId = (e) => {
+    userIdRef.current.focus();
     let email =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     // 형식에 맞는 경우 true 리턴
