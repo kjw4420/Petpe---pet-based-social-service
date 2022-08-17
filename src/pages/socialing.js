@@ -1,17 +1,35 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
 import { Routes, Route } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
+
 import ButtonLarge, {
   RadioNavigater,
   StyledInput,
 } from "../components/globalComponent";
+
 import TopHeader from "../components/TopHeader";
 import RequireAuth from "./RequireAuth";
+import axios from "../api/axios";
 
 const Socialing = () => {
-  const [socialPost, setSocialPost] = useState(dummyDataForSocial);
+  // const [socialPost, setSocialPost] = useState(dummyDataForSocial);
+  const [socialPost, setSocialPost] = useState([]);
+  const [isLoading , setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setIsLoading(true);
+    try {
+      axios.get("http://3.39.181.250/social/socialring/").then((response) => {
+        setSocialPost(response.data);
+        console.log(response.data)
+        setIsLoading(false);
+      });
+    } catch (err) {
+      setIsLoading("err");
+    }
+  }, []);
 
   return (
     <>
@@ -44,12 +62,12 @@ const Socialing = () => {
 
 export const NewSocialing = () => {
   const transformWrap = useRef()
-  const [indexOfForm,setIndexOfForm]=useState(1)
-  const handletransform = (index=indexOfForm)=>{
-    if(index>0 && index<5){
-    transformWrap.style.transform=`transformY(${-(indexOfForm*100)})`
-    setIndexOfForm(indexOfForm+1)}
-  }
+  // const [indexOfForm,setIndexOfForm]=useState(1)
+  // const handletransform = (index=indexOfForm)=>{
+  //   if(index>0 && index<5){
+  //   transformWrap.style.transform=`transformY(${-(indexOfForm*100)})`
+  //   setIndexOfForm(indexOfForm+1)}
+  // }
 
   return (
     <section className="cutover_100vh">
@@ -113,12 +131,12 @@ const TypeNewTitle = () => {
       <StyledInput
         className="social_title_input"
         type="text"
-        onChange={(e) => {
-          setTypedTitle(e.target.value);
-          if (typedTitle.length > 30) {
-            e.target.value = e.target.value.substring(0, 29);
-          }
-        }}
+        // onChange={(e) => {
+        //   setTypedTitle(e.target.value);
+        //   if (typedTitle.length > 30) {
+        //     e.target.value = e.target.value.substring(0, 29);
+        //   }
+        // }}
         placeholder="마음이 맞는 이웃과 소셜링을 진행해보세요"
       />
       <div className="input_length_counter">
@@ -209,10 +227,10 @@ export const SocialingElement = (props) => {
   return (
     <div className="social_chatting" key={props.id}>
       <img
-        src={props.img}
+        src={props.image}
         alt={`${props.title} 대표 이미지`}
         className={
-          props.participant.length === props.maxParticipant
+          props.count === props.maxpeople
             ? "chatting_profile opacity-50"
             : "chatting_profile"
         }
@@ -220,20 +238,20 @@ export const SocialingElement = (props) => {
       <div className="chatting_title">
         <span
           className={
-            props.participant.length !== props.maxParticipant
+            props.count !== props.maxpeople
               ? "p bold"
               : "p bold font_light_gray"
           }
         >
           {props.title}
         </span>
-        <span className="h5 fontgray">{props.date}</span>
+        <span className="h5 fontgray">{props.meetdate}</span>
         <span className="h5 fontgray">{props.location}</span>
         <span className="h5 fontgray">
           {/* {props.maxParticipant - props.participant.length > 0
             ? `${props.maxParticipant - props.participant.length}명 참여가능`
             : "마감된 소셜링"} */}
-          {`${props.participant.length}/${props.maxParticipant}`}
+          {`${props.count}/${props.maxpeople}`}
         </span>
       </div>
     </div>
@@ -269,40 +287,42 @@ const SocialCategory = ({ title, description, type, active }) => {
   );
 };
 // ============더미데이터
-const dummyDataForSocial = [
-  {
-    id: 1,
-    title: "주말에 같이 산책하실 분~",
-    location: "서울 마포구 합정동",
-    img: "http://3.39.181.250/media/storypictures/new_dog1.jpg",
-    date: "2022-08-07",
-    maxParticipant: 3,
-    participant: ["bbomi84", "ruby123", "junguzzang"],
-    category: "food",
-  },
-  {
-    id: 2,
-    title: "애견동반 영어모임 어떠신가요?",
-    location: "서울 용산구 이태원동",
-    img: "http://3.39.181.250/media/storypictures/new_dog2.jpg",
-    date: "2022-08-01",
-    maxParticipant: 6,
-    participant: [],
-    category: "education",
-  },
-  {
-    id: 3,
-    title: "버릇나쁜 우리 강아지? 사회성 기르기",
-    location: "서울 강남구 역삼동",
-    img: "http://3.39.181.250/media/storypictures/dog1.jpg",
-    date: "2022-08-01",
-    maxParticipant: 6,
-    participant: ["bjungubo", "mi84ng"],
-    category: "education",
-  },
-];
+// const dummyDataForSocial = [
+//   {
+//     id: 1,
+//     title: "주말에 같이 산책하실 분~",
+//     location: "서울 마포구 합정동",
+//     img: "http://3.39.181.250/media/storypictures/new_dog1.jpg",
+//     date: "2022-08-07",
+//     maxParticipant: 3,
+//     participant: ["bbomi84", "ruby123", "junguzzang"],
+//     category: "food",
+//   },
+//   {
+//     id: 2,
+//     title: "애견동반 영어모임 어떠신가요?",
+//     location: "서울 용산구 이태원동",
+//     img: "http://3.39.181.250/media/storypictures/new_dog2.jpg",
+//     date: "2022-08-01",
+//     maxParticipant: 6,
+//     participant: [],
+//     category: "education",
+//   },
+//   {
+//     id: 3,
+//     title: "버릇나쁜 우리 강아지? 사회성 기르기",
+//     location: "서울 강남구 역삼동",
+//     img: "http://3.39.181.250/media/storypictures/dog1.jpg",
+//     date: "2022-08-01",
+//     maxParticipant: 6,
+//     participant: ["bjungubo", "mi84ng"],
+//     category: "education",
+//   },
+// ];
 
 const Category = () => {
+  const miniButtons = useRef()
+
   return (
     <div className="category">
       <MiniButton
@@ -310,13 +330,16 @@ const Category = () => {
           e.target.classList.toggle("active");
         }}
         className="active"
+        ref={miniButtons}
       >
         전체보기
       </MiniButton>
       <MiniButton
         onClick={(e) => {
           e.target.classList.toggle("active");
+          
         }}
+        ref={miniButtons}
       >
         레스토랑
       </MiniButton>
@@ -324,6 +347,7 @@ const Category = () => {
         onClick={(e) => {
           e.target.classList.toggle("active");
         }}
+        ref={miniButtons}
       >
         카페
       </MiniButton>
@@ -331,6 +355,7 @@ const Category = () => {
         onClick={(e) => {
           e.target.classList.toggle("active");
         }}
+        ref={miniButtons}
       >
         호텔
       </MiniButton>

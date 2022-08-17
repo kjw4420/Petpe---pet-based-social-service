@@ -13,10 +13,12 @@ import Register from "./register";
 
 import useAuth from "../hooks/useAuth";
 import axios from "../../node_modules/axios/index";
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 
 const Login = () => {
-  
+
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +26,7 @@ const Login = () => {
 
   const errRef = useRef();
   const userIdRef = useRef();
+  const emailcheckbox = useRef();
 
   const [user, setUser] = useState();
   const [pwd, setPwd] = useState();
@@ -55,10 +58,11 @@ const Login = () => {
       );
 
       const accessToken = response?.data?.access_token;
+      const refreshToken = response?.data?.refresh_token;
       const userimage = response?.data?.user?.userimage;
+      const pk = response?.data?.user?.pk
 
-      setAuth({ user: user, pwd: pwd, accessToken: accessToken, userimage:userimage });
-      
+      setAuth({ user: user, pwd: pwd, accessToken: accessToken, userimage:userimage, refreshToken:refreshToken, pk:pk });
       setUser("");
       setPwd("");
       navigate(from, { replace: true });
@@ -147,7 +151,7 @@ const Login = () => {
                   </div>
                   <div className="LoginOptionWrap">
                     <div id="keepLoginOption">
-                      <input type="checkbox" name="keepLoginCheckBox" />
+                      <input type="checkbox" name="keepLoginCheckBox" ref={emailcheckbox}/>
                       <label
                         htmlFor="keepLoginCheckBox"
                         id="keepLoginLabel"

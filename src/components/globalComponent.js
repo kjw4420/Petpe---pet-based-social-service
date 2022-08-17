@@ -38,6 +38,15 @@ export const RadioNavigater = () => {
     </nav>
   );
 };
+// 모바일 래퍼
+export const MobileWrapper = styled.section`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 470px;
+  min-width: 330px;
+  border: 1px solid var(--line-gray);
+  padding: 20px;
+  `
 
 // 버튼컴포넌트
 const ButtonLarge = styled.div`
@@ -67,6 +76,7 @@ export const StyledInput = styled.input`
   border-bottom: 1px solid var(--font-black);
   width: 100%;
 `;
+
 // 존재하지 않는 페이지 (에러페이지)
 export const WrongPage = () => {
   return (

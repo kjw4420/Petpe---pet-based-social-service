@@ -8,20 +8,19 @@ import "slick-carousel/slick/slick-theme.css";
 import TopHeader from "../components/TopHeader";
 import { RadioNavigater, WrongPage } from "../components/globalComponent";
 import StoryDetail from "./storydetail";
-
+import NewStory from "./storyupdate";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
 
   const [isLoading, setIsLoading] = useState(true);
   const [story, setStory] = useState();
-  const [storyDetail, setStoryDetail] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
     try {
       axios.get("http://3.39.181.250/story").then((response) => {
-        setStory(response.data);
+        setStory(response.data.results);
         setIsLoading(false);
       });
     } catch (err) {
@@ -48,8 +47,11 @@ const Story = () => {
               URL="/profile"
               callBackType2="img"
               callBackImg2="plus"
+              URL2="/story/newstory"
             />
+
             <RadioNavigater />
+
             <section className="storyWrapper">
               {story.map((props) => {
                 return StoryEle(props);
@@ -59,6 +61,7 @@ const Story = () => {
         }
       />
       <Route path="/:id" element={<StoryDetail />}></Route>
+      <Route path="/newstory" element={<NewStory />}></Route>
     </Routes>
   );
 };
@@ -67,15 +70,17 @@ export const StoryEle = (props) => {
   return (
     <div className="story" key={props.id}>
       <div className="userProfileWrapper">
-        <div className="userProfile-sm">
-          <img src={props.userimage} alt={props.username + "의 프로필사진"} />
-          <div>
-            <span className="p bold">
-              {props.useremail.substr(0, props.useremail.indexOf("@"))}
-            </span>
-            <span className="h5 fontgray">{props.username}</span>
+        <Link to={`/account/${props.user_id}`}>
+          <div className="userProfile-sm">
+            <img src={props.userimage} alt={props.username + "의 프로필사진"} />
+            <div>
+              <span className="p bold">
+                {props.useremail.substr(0, props.useremail.indexOf("@"))}
+              </span>
+              <span className="h5 fontgray">{props.username}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div className="imgWrapper">
         <Slider
@@ -144,7 +149,10 @@ export const StoryEle = (props) => {
           )}
         </div>
         {/* <span className="storyComment h5">{props.comments.text}</span> */}
-        <input type="text" className="mt-5" placeholder="댓글을 입력하세요" />
+        {/* <div>
+          <input type="text" className="mt-5" placeholder="댓글을 입력하세요" />
+          <button>게시</button>
+        </div> */}
         <span className="postedDate h5 fontgray mt-5">
           {new Date(props.createdAt).toLocaleDateString()}
         </span>
