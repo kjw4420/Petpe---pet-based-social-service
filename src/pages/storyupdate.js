@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import axios from "../../node_modules/axios/index";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,22 +7,27 @@ import MiniButton from "./../components/minibutton";
 import { MobileWrapper } from "./../components/globalComponent";
 import useAuth from "./../hooks/useAuth";
 
+
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'x-CSRFToken';
 
 const NewStory = () => {
   const [contents, setContents] = useState();
+  const [Picture, setPicture]=useState();
   const { auth } = useAuth();
-
+  
   const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("img ", Picture);
+    
     try {
       axios
         .post(
-          "http://3.39.181.250/story",
-          JSON.stringify({ "title": "sasd", "content": contents }),
+          "http://3.39.181.250/story", 
           {
             headers: {
-              "Content-Type": "application/json",
+              "content-type": "multipart/form-data",
               Authorization: `Bearer ${auth.accessToken}`,
             },
             withCredentials: true,
@@ -30,12 +35,13 @@ const NewStory = () => {
           }
         )
         .then((response) => {
-          console.log(response);
+          console.log('response',JSON.stringify(response, contents, Picture));
         });
     } catch (err) {
       console.log(err);
     }
   };
+
 
   return (
     <>
@@ -51,7 +57,10 @@ const NewStory = () => {
             placeholder="내용을 입력하세요"
             onChange={(e) => setContents(e.target.value)}
           />
-          <input type="file" />
+          <input 
+          type="file" 
+          onChange={(e)=> setPicture(e.target.files)}/> 
+          
           <MiniButton onClick={handleSubmit}>제출</MiniButton>
         </form>
       </MobileWrapper>
