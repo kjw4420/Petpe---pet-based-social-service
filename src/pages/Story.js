@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link,useLocation } from "react-router-dom";
 import axios from "../../node_modules/axios/index";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -17,7 +17,8 @@ import RequireAuth from "./RequireAuth";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
-
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const [isLoading, setIsLoading] = useState(true);
   const [story, setStory] = useState();
 
@@ -32,7 +33,7 @@ const Story = () => {
     } catch (err) {
       setIsLoading("err");
     }
-  }, []);
+  }, [from]);
 
   // 새로고침용 함수
 

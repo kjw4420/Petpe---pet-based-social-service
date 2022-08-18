@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./socialing.css";
 import MiniButton from "../components/minibutton";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link,useParams } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
 
 import ButtonLarge, {
@@ -18,8 +18,9 @@ import SocialDetail from "./socialDetail";
 
 const Socialing = () => {
   // const [socialPost, setSocialPost] = useState(dummyDataForSocial);
-  const [socialPost, setSocialPost] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const params = useParams()
+  const [socialPost, setSocialPost] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,20 +33,13 @@ const Socialing = () => {
     } catch (err) {
       setIsLoading("err");
     }
-  }, []);
+  }, [params]);
+
   if (isLoading) {
     return (
       <>
         <TopHeader type="3" name="소셜링" URL="/social/newsocial" />
         <RadioNavigater />
-        <MobileWrapper>
-          <div className="search_box">
-            <input type="text" className="search" placeholder=" 검색" />
-          </div>
-          <Category />
-          <SocialSkeleton />
-          
-        </MobileWrapper>
       </>
     );
   }else
