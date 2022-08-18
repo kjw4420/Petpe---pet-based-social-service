@@ -30,7 +30,6 @@ function App() {
       {/* need to protect */}
       <Route element={<RequireAuth />}>
         <Route path="/profile/*" element={<Profile />} />
-        <Route path="/story/newstory" element={<NewStory />} />
       </Route>
 
       {/* catch up (오류) */}

@@ -71,7 +71,33 @@ const ButtonLarge = styled.div`
     color: #a68762;
     background-color: #fff;
   }
+  
 `;
+export const ButtonMedium = styled.div`
+  min-width: 150px;
+  width: 50%;
+  height: 46px;
+  padding: 10px 0;
+  border-radius: 5px;
+  background-color: #a68762;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &.disabled {
+    background-color: #f2f2f2;
+    color: #737373;
+  }
+  &.ghost {
+    border: 2px solid #a68762;
+    color: #a68762;
+    background-color: #fff;
+  }
+  
+`;
+
 export const StyledInput = styled.input`
   border-bottom: 1px solid var(--font-black);
   width: 100%;

@@ -9,6 +9,7 @@ import TopHeader from "../components/TopHeader";
 import { RadioNavigater, WrongPage } from "../components/globalComponent";
 import StoryDetail from "./storydetail";
 import NewStory from "./storyupdate";
+import RequireAuth from "./RequireAuth";
 
 const Story = () => {
   // 처음 랜더링때 화면표시용
@@ -61,7 +62,10 @@ const Story = () => {
         }
       />
       <Route path="/:id" element={<StoryDetail />}></Route>
-      <Route path="/newstory" element={<NewStory />}></Route>
+      
+      <Route element={<RequireAuth />}>
+        <Route path="/newstory" element={<NewStory />}></Route>
+      </Route>
     </Routes>
   );
 };
