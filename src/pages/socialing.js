@@ -19,6 +19,7 @@ const Socialing = () => {
   const [socialPost, setSocialPost] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+
   useEffect(() => {
     setIsLoading(true);
     try {
@@ -63,12 +64,25 @@ const Socialing = () => {
   );
 };
 
+// =========================================
+//                 새소셜
+// =========================================
+
+
+
 export const NewSocialing = () => {
 
   const transformWrap = useRef();
   const [indexOfForm,setIndexOfForm]=useState(1)
+  const [needToSubmit,setNeedToSubmit]=useState({})
 
-  const handletransform = ()=>{
+  useEffect(()=>{
+    console.log(needToSubmit)
+  },[needToSubmit])
+
+  const handletransform = (e)=>{
+    setNeedToSubmit()
+
     if(indexOfForm>0 && indexOfForm<5){
     transformWrap.current.style.transform=`translateY(-${indexOfForm*100}vh)`
     setIndexOfForm(indexOfForm+1)}
@@ -98,6 +112,8 @@ export const NewSocialing = () => {
 
 // ===============카테고리 선택창
 const ChooseNewCategory = ({callback}) => {
+
+    
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
@@ -134,6 +150,8 @@ const ChooseNewCategory = ({callback}) => {
 // ============제목작성
 const TypeNewTitle = ({callback}) => {
   const [typedTitle, setTypedTitle] = useState(false);
+  useEffect((typedTitle)=>{},[typedTitle])
+
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">소셜링 제목을 작성해볼까요?</span>
@@ -160,6 +178,11 @@ const TypeNewTitle = ({callback}) => {
 // =====================내용작성
 const TypeNewDetail = ({callback}) => {
   const [typedDetail, setTypedDetail] = useState(false);
+
+  useEffect(()=>{
+    console.log(typedDetail)
+  },[typedDetail])
+  
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">소셜링 내용을 작성해볼까요?</span>
@@ -183,6 +206,7 @@ const TypeNewDetail = ({callback}) => {
 const TypeNewTime = ({callback}) => {
   const [typedTime, setTypedTime] = useState();
   const [typedDate, setTypedDate] = useState();
+
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">언제 만날까요?</span>
