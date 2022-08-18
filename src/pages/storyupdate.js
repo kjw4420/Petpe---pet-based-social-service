@@ -14,17 +14,21 @@ axios.defaults.xsrfHeaderName = 'x-CSRFToken';
 const NewStory = () => {
   const [contents, setContents] = useState();
   const [Picture, setPicture]=useState();
+  const [title,setitle]=useState();
   const { auth } = useAuth();
   
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("img ", Picture);
+    formData.append("picture ", Picture);
+    formData.append("contents", contents);
+    formData.append("title","");
+    console.log(formData);
     
     try {
       axios
         .post(
-          "http://3.39.181.250/story", 
+          "http://3.39.181.250/story/",formData, 
           {
             headers: {
               "content-type": "multipart/form-data",
