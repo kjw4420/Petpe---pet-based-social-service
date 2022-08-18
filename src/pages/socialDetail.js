@@ -3,8 +3,10 @@ import TopHeader from "../components/TopHeader";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, React } from "react";
 import axios from "../../node_modules/axios/index";
+import useAuth from './../hooks/useAuth';
 
 const SocialDetail = () => {
+  const {auth} = useAuth()
   const pk = useParams();
   const [socialDetail, setSocialDetail] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,15 +25,11 @@ const SocialDetail = () => {
       setIsLoading("err");
     }
   }, []);
-
-  if (isLoading) {
-    return <>loading</>;
-
-  } else {
     return (
       <>
         <TopHeader type="2" name="소셜링" />
         <MobileWrapper>
+          {pk.id===auth.pk?<>수정버튼</>:null}
           <h1 className="bold">타이틀 안날라옴</h1>
           <img
             src={socialDetail.image}
@@ -47,6 +45,6 @@ const SocialDetail = () => {
       </>
     );
   }
-};
+
 
 export default SocialDetail;

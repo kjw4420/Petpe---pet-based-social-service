@@ -24,12 +24,11 @@ const Account = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userDetail, setUserDetail] = useState();
   const userPK = useParams();
-  console.log(userPK.id)
   useEffect(() => {
     setIsLoading(true);
     try {
       axios
-        .get(`http://3.39.181.250/accounts/user/${userPK.id}`, {
+        .get(`http://3.39.181.250/accounts/user/${userPK["*"]}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${auth.accessToken}`,
@@ -47,15 +46,13 @@ const Account = () => {
       setIsLoading("err");
     }
   }, []);
-  if (isLoading){
-    return ( <TopHeader
-      type="4"
-      URL2="/profile/option"
-      callBackImg2="setting"
-    />)
-  }else
+  if (isLoading) {
+    return <TopHeader type="4" URL2="/profile/option" callBackImg2="setting" />;
+  } else
     return (
-
+      <Routes path="/">
+        <Route path="/:id"
+          element={
             <>
               <TopHeader
                 type="4"
@@ -75,23 +72,23 @@ const Account = () => {
                     <br />
                   </span> */}
                     <span className="p xbold">
-                      {userDetail.username}
+                      {  userDetail.email.substr(0, userDetail.email.indexOf("@"))}
                       <br />
                     </span>
-                    <span className="comment">{userDetail.email}</span>
+                    <span className="comment">{userDetail.username}</span>
                   </div>
                 </div>
                 <div className="userInfo">
-                  <div>게시물</div>
+                  <div className="bold">게시물</div>
                   <div>{userDetail.writen_story.length}</div>
-                  {/* <div>팔로잉</div> */}
                 </div>
                 <button className="Writting">글쓰기</button>
-                <p className="mt-10">게시물</p>
+                <p className="mt-10 bold">게시물</p>
                 <div className="presentpicture">
                   {userDetail.writen_story.map((e) => {
                     return (
-                      <img key={e.pictures[0].id}
+                      <img
+                        key={e.pictures[0].id}
                         src={e.pictures[0].picture}
                         alt="예시사진"
                         className="exPicture"
@@ -101,7 +98,9 @@ const Account = () => {
                 </div>
               </MobileWrapper>
             </>
-
+          }
+        ></Route>
+      </Routes>
     );
 };
 

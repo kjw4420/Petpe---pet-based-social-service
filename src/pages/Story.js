@@ -6,7 +6,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TopHeader from "../components/TopHeader";
-import { RadioNavigater, WrongPage } from "../components/globalComponent";
+import {
+  RadioNavigater,
+  StorySkeleton,
+  WrongPage,
+} from "../components/globalComponent";
 import StoryDetail from "./storydetail";
 import NewStory from "./storyupdate";
 import RequireAuth from "./RequireAuth";
@@ -22,6 +26,7 @@ const Story = () => {
     try {
       axios.get("http://3.39.181.250/story").then((response) => {
         setStory(response.data.results);
+        console.log(response.data.results)
         setIsLoading(false);
       });
     } catch (err) {
@@ -32,7 +37,23 @@ const Story = () => {
   // 새로고침용 함수
 
   if (isLoading) {
-    return <TopHeader type="3" callBackImg="profile_icon" />;
+    return (
+      <>
+        <TopHeader
+          type="4"
+          callBackImg="profile_icon"
+          URL="/profile"
+          callBackType2="img"
+          callBackImg2="plus"
+          URL2="/story/newstory"
+        />
+        <RadioNavigater />
+        <section className="storyWrapper">
+          <StorySkeleton />
+          <StorySkeleton />
+        </section>
+      </>
+    );
   } else if (isLoading === "err") {
     return <WrongPage />;
   }
@@ -52,7 +73,6 @@ const Story = () => {
             />
 
             <RadioNavigater />
-
             <section className="storyWrapper">
               {story.map((props) => {
                 return StoryEle(props);
@@ -62,7 +82,7 @@ const Story = () => {
         }
       />
       <Route path="/:id" element={<StoryDetail />}></Route>
-      
+
       <Route element={<RequireAuth />}>
         <Route path="/newstory" element={<NewStory />}></Route>
       </Route>

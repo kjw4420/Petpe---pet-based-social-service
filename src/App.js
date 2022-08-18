@@ -24,7 +24,7 @@ function App() {
       <Route path="/social/*" element={<Socialing />} />
       <Route path="/talktalk/" element={<TalkTalk />} />
       <Route path="/place/" element={<Place />} />
-      <Route path="/account/:id" element={<Account />} />
+      <Route path="/account/*" element={<Account />} />
       
 
       {/* need to protect */}

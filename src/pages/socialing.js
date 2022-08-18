@@ -5,7 +5,9 @@ import { Routes, Route, Link } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
 
 import ButtonLarge, {
+  MobileWrapper,
   RadioNavigater,
+  SocialSkeleton,
   StyledInput,
 } from "../components/globalComponent";
 
@@ -19,7 +21,6 @@ const Socialing = () => {
   const [socialPost, setSocialPost] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-
   useEffect(() => {
     setIsLoading(true);
     try {
@@ -32,7 +33,22 @@ const Socialing = () => {
       setIsLoading("err");
     }
   }, []);
-
+  if (isLoading) {
+    return (
+      <>
+        <TopHeader type="3" name="소셜링" URL="/social/newsocial" />
+        <RadioNavigater />
+        <MobileWrapper>
+          <div className="search_box">
+            <input type="text" className="search" placeholder=" 검색" />
+          </div>
+          <Category />
+          <SocialSkeleton />
+          
+        </MobileWrapper>
+      </>
+    );
+  }else
   return (
     <>
       <Routes path="/">
@@ -54,7 +70,7 @@ const Socialing = () => {
             </>
           }
         />
-        <Route path="/:id" element ={<SocialDetail/>}></Route>
+        <Route path="/:id" element={<SocialDetail />}></Route>
         {/* 허가받아야하는 */}
         <Route path="/newsocial" element={<RequireAuth />}>
           <Route path="/newsocial" element={<NewSocialing />} />
@@ -64,56 +80,86 @@ const Socialing = () => {
   );
 };
 
-// =========================================
-//                 새소셜
-// =========================================
+// ===============단일 소셜링
+export const SocialingElement = (props) => {
+  return (
+    <Link to={`/social/${props.id}`} key={props.id}>
+      <div className="social_chatting">
+        <img
+          src={props.image}
+          alt={`${props.title} 대표 이미지`}
+          className={
+            props.count === props.maxpeople
+              ? "chatting_profile opacity-50"
+              : "chatting_profile"
+          }
+        />
+        <div className="chatting_title">
+          <span
+            className={
+              props.count !== props.maxpeople
+                ? "p bold"
+                : "p bold font_light_gray"
+            }
+          >
+            {props.title}
+          </span>
+          <span className="h5 fontgray">{props.meetdate}</span>
+          <span className="h5 fontgray">{props.location}</span>
+          <span className="h5 fontgray">
+            {`${props.count}/${props.maxpeople}`}
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+};
 
-
+// ==============================
+// 새소셜
+// =================================
 
 export const NewSocialing = () => {
-
   const transformWrap = useRef();
-  const [indexOfForm,setIndexOfForm]=useState(1)
-  const [needToSubmit,setNeedToSubmit]=useState({})
+  const [indexOfForm, setIndexOfForm] = useState(1);
 
-  useEffect(()=>{
-    console.log(needToSubmit)
-  },[needToSubmit])
-
-  const handletransform = (e)=>{
-    setNeedToSubmit()
-
-    if(indexOfForm>0 && indexOfForm<5){
-    transformWrap.current.style.transform=`translateY(-${indexOfForm*100}vh)`
-    setIndexOfForm(indexOfForm+1)}
-    else if(indexOfForm>=5){
-      console.log("마지막페이지입니다")
+  const handletransform = () => {
+    if (indexOfForm > 0 && indexOfForm < 5) {
+      transformWrap.current.style.transform = `translateY(-${
+        indexOfForm * 100
+      }vh)`;
+      setIndexOfForm(indexOfForm + 1);
+    } else if (indexOfForm >= 5) {
+      console.log("마지막페이지입니다");
     }
-  }
+  };
+
+
 
   return (
     <section className="cutover_100vh">
       <TopHeader type="2" name="소셜링 열기" />
+
+
       <section className="social_wrapper">
         <div className="newwsocial_form_wrapper">
           <div className="newsocial_slider" ref={transformWrap}>
             <ChooseNewCategory callback={handletransform} />
-            <TypeNewTitle callback={handletransform}/>
-            <TypeNewDetail callback={handletransform}/>
-            <TypeNewTime callback={handletransform}/>
-            <SelectType callback={handletransform}/>
+            <TypeNewTitle callback={handletransform} />
+            <TypeNewDetail callback={handletransform} />
+            <TypeNewTime callback={handletransform} />
+            <SelectType callback={handletransform} />
           </div>
         </div>
-        
       </section>
+
+
     </section>
   );
 };
 
 // ===============카테고리 선택창
-const ChooseNewCategory = ({callback}) => {
-
-    
+const ChooseNewCategory = ({ callback }) => {
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">어떤 소셜링을 열까요?</span>
@@ -148,10 +194,10 @@ const ChooseNewCategory = ({callback}) => {
   );
 };
 // ============제목작성
-const TypeNewTitle = ({callback}) => {
+const TypeNewTitle = ({ callback }) => {
   const [typedTitle, setTypedTitle] = useState(false);
-  useEffect((typedTitle)=>{},[typedTitle])
-
+  useEffect((typedTitle) => {}, [typedTitle]);
+  
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">소셜링 제목을 작성해볼까요?</span>
@@ -160,29 +206,33 @@ const TypeNewTitle = ({callback}) => {
         type="text"
         onChange={(e) => {
           setTypedTitle(e.target.value);
-          if (typedTitle.length > 30) {
-            e.target.value = e.target.value.substring(0, 29);
+          if (e.target.value.length > 39) {
+            e.target.value = e.target.value.substring(0, 39);
           }
         }}
         placeholder="마음이 맞는 이웃과 소셜링을 진행해보세요"
       />
       <div className="input_length_counter">
         <span>{typedTitle ? typedTitle.length : 0}</span>
-        <span className="font_light_gray">/30</span>
+        <span className="font_light_gray">/40</span>
       </div>
-      <ButtonLarge className="disabled">뒤로가기</ButtonLarge>
-      <ButtonLarge className={typedTitle ? "" : "disabled"} onClick={typedTitle ?callback:null} >다음</ButtonLarge>
+      <ButtonLarge
+        className={typedTitle ? "" : "disabled"}
+        onClick={typedTitle ? callback : null}
+      >
+        다음
+      </ButtonLarge>
     </PaddingWrap>
   );
 };
 // =====================내용작성
-const TypeNewDetail = ({callback}) => {
+const TypeNewDetail = ({ callback }) => {
   const [typedDetail, setTypedDetail] = useState(false);
 
-  useEffect(()=>{
-    console.log(typedDetail)
-  },[typedDetail])
-  
+  useEffect(() => {
+    console.log(typedDetail);
+  }, [typedDetail]);
+
   return (
     <PaddingWrap>
       <span className="h4 newsocial_title">소셜링 내용을 작성해볼까요?</span>
@@ -198,12 +248,17 @@ const TypeNewDetail = ({callback}) => {
         placeholder="소셜링 내용을 입력해주세요"
       />
       <div className="input_length_counter"></div>
-      <ButtonLarge className={typedDetail ? "" : "disabled"} onClick={typedDetail ?callback:null}>다음</ButtonLarge>
+      <ButtonLarge
+        className={typedDetail ? "" : "disabled"}
+        onClick={typedDetail ? callback : null}
+      >
+        다음
+      </ButtonLarge>
     </PaddingWrap>
   );
 };
 // =====================시간/날짜선택
-const TypeNewTime = ({callback}) => {
+const TypeNewTime = ({ callback }) => {
   const [typedTime, setTypedTime] = useState();
   const [typedDate, setTypedDate] = useState();
 
@@ -223,14 +278,17 @@ const TypeNewTime = ({callback}) => {
         }}
       />
       <div className="input_length_counter"></div>
-      <ButtonLarge className={typedTime && typedDate ? "" : "disabled"} onClick={typedTime && typedDate ? callback: null}>
+      <ButtonLarge
+        className={typedTime && typedDate ? "" : "disabled"}
+        onClick={typedTime && typedDate ? callback : null}
+      >
         다음
       </ButtonLarge>
     </PaddingWrap>
   );
 };
 // =====================온오프라인선택
-const SelectType = ({callback}) => {
+const SelectType = ({ callback }) => {
   const [selectedType, setSelectedType] = useState();
 
   return (
@@ -251,48 +309,17 @@ const SelectType = ({callback}) => {
         value="오프라인"
       />
       <div className="input_length_counter"></div>
-      <ButtonLarge className={selectedType ? "" : "disabled" }onClick={selectedType ? callback: null}>다음</ButtonLarge>
+      <ButtonLarge
+        className={selectedType ? "" : "disabled"}
+        onClick={selectedType ? callback : null}
+      >
+        다음
+      </ButtonLarge>
     </PaddingWrap>
   );
 };
 
-// ===============단일 소셜링
-export const SocialingElement = (props) => {
-  return (
-    <Link to={`/social/${props.id}`} key={props.id}>
-      <div className="social_chatting" >
-        <img
-          src={props.image}
-          alt={`${props.title} 대표 이미지`}
-          className={
-            props.count === props.maxpeople
-              ? "chatting_profile opacity-50"
-              : "chatting_profile"
-          }
-        />
-        <div className="chatting_title">
-          <span
-            className={
-              props.count !== props.maxpeople
-                ? "p bold"
-                : "p bold font_light_gray"
-            }
-          >
-            {props.title}
-          </span>
-          <span className="h5 fontgray">{props.meetdate}</span>
-          <span className="h5 fontgray">{props.location}</span>
-          <span className="h5 fontgray">
-            {/* {props.maxParticipant - props.participant.length > 0
-            ? `${props.maxParticipant - props.participant.length}명 참여가능`
-            : "마감된 소셜링"} */}
-            {`${props.count}/${props.maxpeople}`}
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-};
+
 
 // ===============카테고리 엘리먼트
 const SocialCategory = ({ title, description, type, active }) => {

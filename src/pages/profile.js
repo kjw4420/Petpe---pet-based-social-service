@@ -19,7 +19,7 @@ axios.defaults.xsrfHeaderName = "x-CSRFToken";
 
 const Profile = () => {
   const { auth } = useAuth();
-
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userDetail, setUserDetail] = useState();
 
@@ -75,12 +75,11 @@ if(isLoading){
                 </div>
               </div>
               <div className="userInfo">
-                <div>게시물</div>
+                <div className="bold">게시물</div>
                 <div>{userDetail.writen_story.length}</div>
-                {/* <div>팔로잉</div> */}
               </div>
               <button className="Writting">글쓰기</button>
-              <p className="mt-10">게시물</p>
+              <div className="mt-10 bold">게시물</div>
               <div className="presentpicture">
                 {userDetail.writen_story.map((e) => {
                   return (
@@ -88,6 +87,8 @@ if(isLoading){
                       src={e.pictures[0].picture}
                       alt="예시사진"
                       className="exPicture"
+                      key={e.id}
+                      onClick={(()=>{navigate(`/story/${e.id}`)})}
                     ></img>
                   );
                 })}
