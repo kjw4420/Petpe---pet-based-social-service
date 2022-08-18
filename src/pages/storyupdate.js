@@ -7,45 +7,55 @@ import MiniButton from "./../components/minibutton";
 import { MobileWrapper } from "./../components/globalComponent";
 import useAuth from "./../hooks/useAuth";
 
-
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'x-CSRFToken';
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "x-CSRFToken";
 
 const NewStory = () => {
   const [contents, setContents] = useState();
-  const [Picture, setPicture]=useState();
-  const [title,setitle]=useState();
+  const [Picture, setPicture] = useState();
+  const [title, setitle] = useState();
   const { auth } = useAuth();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("picture ", Picture);
+
+    formData.append("title", "");
     formData.append("contents", contents);
-    formData.append("title","");
+    formData.append("picture", Picture);
     console.log(formData);
-    
+
     try {
-      axios
-        .post(
-          "http://3.39.181.250/story/",formData, 
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-              Authorization: `Bearer ${auth.accessToken}`,
-            },
-            withCredentials: true,
-            "Access-Control-Allow-Credentials": "*",
-          }
-        )
+      axios({
+        method: "post",
+        url: "http://3.39.181.250/story/",
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+        withCredentials: true,
+        "Access-Control-Allow-Credentials": "*"
+
+      })
+        // .post(
+        //   "http://3.39.181.250/story/",formData,
+        //   {
+        //     headers: {
+        //       "content-type": "multipart/form-data",
+        //       Authorization: `Bearer ${auth.accessToken}`,
+        //     },
+        //     withCredentials: true,
+        //     "Access-Control-Allow-Credentials": "*",
+        //   }
+        // )
         .then((response) => {
-          console.log('response',JSON.stringify(response, contents, Picture));
+          console.log("response", JSON.stringify(response, contents, Picture));
         });
     } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <>
@@ -61,10 +71,8 @@ const NewStory = () => {
             placeholder="내용을 입력하세요"
             onChange={(e) => setContents(e.target.value)}
           />
-          <input 
-          type="file" 
-          onChange={(e)=> setPicture(e.target.files)}/> 
-          
+          <input type="file" onChange={(e) => setPicture(e.target.files)} />
+
           <MiniButton onClick={handleSubmit}>제출</MiniButton>
         </form>
       </MobileWrapper>

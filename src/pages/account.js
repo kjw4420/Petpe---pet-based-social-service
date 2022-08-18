@@ -20,7 +20,7 @@ axios.defaults.xsrfHeaderName = "x-CSRFToken";
 
 const Account = () => {
   const { auth } = useAuth();
-
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userDetail, setUserDetail] = useState();
   const userPK = useParams();
@@ -91,6 +91,7 @@ const Account = () => {
                         key={e.pictures[0].id}
                         src={e.pictures[0].picture}
                         alt="예시사진"
+                        onClick={(()=>{navigate(`/story/${e.id}`)})}
                         className="exPicture"
                       ></img>
                     );

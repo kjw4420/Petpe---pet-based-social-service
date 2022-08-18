@@ -71,7 +71,7 @@ if(isLoading){
                     {userDetail.username}
                     <br />
                   </span>
-                  <span className="comment">{userDetail.email}</span>
+                  <span className="comment">{userDetail.email.substr(0, userDetail.email.indexOf("@"))}</span>
                 </div>
               </div>
               <div className="userInfo">
