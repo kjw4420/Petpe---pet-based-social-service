@@ -28,7 +28,7 @@ const NewStory = () => {
     try {
       axios
         .post(
-          "http://3.39.181.250/story/",formData, 
+          "http://3.34.21.153/story/",formData, 
           {
             headers: {
               "content-type": "multipart/form-data",
@@ -39,7 +39,7 @@ const NewStory = () => {
           }
         )
         .then((response) => {
-          console.log('response',JSON.stringify(response, contents, Picture));
+          console.log(response);
         });
     } catch (err) {
       console.log(err);
