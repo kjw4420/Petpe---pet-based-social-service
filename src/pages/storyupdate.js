@@ -13,75 +13,51 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'x-CSRFToken';
 
 const NewStory = () => {
-  const [contents, setContents] = useState();
-  const [Picture, setPicture]=useState();
-  const [title,setitle]=useState();
-  const { auth } = useAuth();
-  
-let dataSet ={
-  title:"",
-  contents:contents,
-  Picture:Picture,
-};
 
+  const [contents, setContents]=useState();
+  const [picture, setPicture]=useState();
 
-  const handleSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    
-    let dataSet ={
-      title:"",
-      contents:contents,
-      Picture:Picture,
+    e.persist();
+
+    let files = e.target.profile_files.files;
+    let formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i]);
+    }
+
+    let dataSet = {
+      title: "",
+      contents: contents,
+      picture: picture,
     };
 
-    formData.append("data", JSON.stringify(dataSet))
+    formData.append("data", JSON.stringify(dataSet));
 
-    try {
-      axios
-        .post(
-          "http://3.34.21.153/story/", 
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-              Authorization: `Bearer ${auth.accessToken}`,
-            },
-            withCredentials: true,
-            "Access-Control-Allow-Credentials": "*",
-          }
-        )
-        .then((response) => {
-          console.log(response);
-        });
-    } catch (err) {
-      console.log(err);
-    }
+    const postSurvey = await axios({
+      method: "POST",
+      url: "http://3.34.21.153/story/",
+      mode: "cors",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+
+    console.log(postSurvey);
   };
 
-
   return (
-    <>
-      <TopHeader
-        type="3"
-        name="새 스토리"
-        callBackType="text"
-        callBackText="저장"
+    <form onSubmit={(e) => onSubmit(e)}>
+      <input
+        type="file"
+        name="profile_files"
+        multiple="multiple"
       />
-      <MobileWrapper>
-        <form>
-          <textarea
-            placeholder="내용을 입력하세요"
-            onChange={(e) => setContents(e.target.value)}
-          />
-          <input 
-          type="file" 
-          onChange={(e)=> setPicture(e.target.files)}/> 
-          
-          <MiniButton onClick={handleSubmit}>제출</MiniButton>
-        </form>
-      </MobileWrapper>
-    </>
+
+      <button type="submit">제출</button>
+    </form>
   );
 };
-
 export default NewStory;
