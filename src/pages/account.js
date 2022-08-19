@@ -92,6 +92,7 @@ const Account = () => {
                         key={e.pictures[0].id}
                         src={e.pictures[0].picture}
                         alt="예시사진"
+                        onClick={(()=>{navigate(`/story/${e.id}`)})}
                         className="exPicture"
                         onClick={(()=>{navigate(`/story/${e.id}`)})}
                       ></img>
