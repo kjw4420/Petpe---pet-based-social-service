@@ -17,7 +17,7 @@ const StoryDetail = () => {
     axios.post(`http://3.34.21.153/comments/`,
     {
       headers: { "Content-Type": "application/json" },
-      body:{ "text": comment, "story": userkey.id },
+      body:{ "text": String(comment), "story": Number(userkey.id) },
       withCredentials: true
     }
     )
