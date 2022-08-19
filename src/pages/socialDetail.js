@@ -18,19 +18,7 @@ const SocialDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const deleteSocial=()=>{
-    try {
-      axios
-        .delete(`http://3.34.21.153/social/socialring/${pk.id}`
-        )
-        .then((response) => {
-          console.log(response.data);
-          navigate("/social",{ replace: true })
-        })
-    } catch (err) {
-      setIsLoading("err");
-    }
-  };
+
 
 
 
@@ -59,7 +47,7 @@ const SocialDetail = () => {
   const joinSocial = () => {
     try {
       axios
-        .post(`http://3.34.21.153/social/${pk.id}join/`, {
+        .post(`http://3.34.21.153/social/socialring/${pk.id}/join`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${auth.accessToken}`,
@@ -74,7 +62,7 @@ const SocialDetail = () => {
       setIsLoading("err");
     }
   };
-
+// 첫로딩
   useEffect(() => {
     setIsLoading(true);
     try {
@@ -90,27 +78,46 @@ const SocialDetail = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setIsLoading(true);
+  const deleteSocial=()=>{
     try {
       axios
-        .get(`http://3.34.21.153/social/socialring/comments/${pk.id}`)
+        .delete(`http://3.34.21.153/social/socialring/${pk.id}`
+        )
         .then((response) => {
-          setSocialComment(response.data);
-          console.log(response.data);
-          setIsLoading(false);
-        });
+          navigate("/social",{ replace: true })
+        })
     } catch (err) {
       setIsLoading("err");
     }
-  }, []);
+  };
 
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   try {
+  //     axios
+  //       .get(`http://3.34.21.153/social/socialring/${pk.id}`)
+  //       .then((response) => {
+  //         setSocialComment(response.data);
+  //         // console.log(response.data);
+  //         setIsLoading(false);
+  //       });
+  //   } catch (err) {
+  //     setIsLoading("err");
+  //   }
+  // }, []);
+
+
+if(socialDetail===[]){
+  return(
+    <div>loading</div>
+  )
+}else
   return (
     <>
       <TopHeader type="2" name="소셜링" />
       <MobileWrapper>
         {pk.id === auth.pk ? <>수정버튼</> : null}
-        <h1 className="bold">타이틀 안날라옴</h1>
+        <h1 className="bold">{`타이틀: ${socialDetail.title}`}</h1>
         <img src={socialDetail.image} alt={socialDetail.id + "의 대표이미지"} />
         <p>{`카테고리- ${socialDetail.category}`}</p>
         <p>{`타입- ${socialDetail.type}`}</p>
@@ -120,6 +127,16 @@ const SocialDetail = () => {
         <p>{`만나는시간- ${socialDetail.meettime}`}</p>
         <div onClick={joinSocial}>참여하기</div>
         <div onClick={deleteSocial}>소셜링삭제하기</div>
+
+        <div>
+          {/* {socialDetail.comments.map((e)=>{
+            return(
+            <span key={e.id}>
+              <p>{e.author_username}</p>
+              <p>{e.text}</p>
+            </span>
+)          })} */}
+        </div>
         <input
                   type="text"
                   className="mt-10 comment_input"

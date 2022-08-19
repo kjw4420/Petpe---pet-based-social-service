@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Container from "../components/container";
 import Option from "./option";
+
 import {
   Link,
   Route,
@@ -20,7 +21,7 @@ axios.defaults.xsrfHeaderName = "x-CSRFToken";
 
 const Account = () => {
   const { auth } = useAuth();
-
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userDetail, setUserDetail] = useState();
   const userPK = useParams();
@@ -92,6 +93,7 @@ const Account = () => {
                         src={e.pictures[0].picture}
                         alt="예시사진"
                         className="exPicture"
+                        onClick={(()=>{navigate(`/story/${e.id}`)})}
                       ></img>
                     );
                   })}
