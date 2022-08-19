@@ -12,10 +12,9 @@ const SocialDetail = () => {
   const { auth } = useAuth();
   const pk = useParams();
   const [socialDetail, setSocialDetail] = useState([]);
-  const [socialComment, setSocialComment] = useState([]);
+  // const [socialComment, setSocialComment] = useState([]);
   const [newComment,setNewComment]=useState();
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
   const navigate = useNavigate();
 
 
@@ -62,6 +61,7 @@ const SocialDetail = () => {
       setIsLoading("err");
     }
   };
+
 // 첫로딩
   useEffect(() => {
     setIsLoading(true);
@@ -70,7 +70,6 @@ const SocialDetail = () => {
         .get(`http://3.34.21.153/social/socialring/${pk.id}`)
         .then((response) => {
           setSocialDetail(response.data);
-          console.log(response.data);
           setIsLoading(false);
         });
     } catch (err) {
@@ -91,6 +90,7 @@ const SocialDetail = () => {
     }
   };
 
+  //댓글 불러오기
   // useEffect(() => {
   //   setIsLoading(true);
   //   try {
@@ -106,12 +106,6 @@ const SocialDetail = () => {
   //   }
   // }, []);
 
-
-if(socialDetail===[]){
-  return(
-    <div>loading</div>
-  )
-}else
   return (
     <>
       <TopHeader type="2" name="소셜링" />
@@ -129,13 +123,14 @@ if(socialDetail===[]){
         <div onClick={deleteSocial}>소셜링삭제하기</div>
 
         <div>
-          {/* {socialDetail.comments.map((e)=>{
+          {socialDetail==[]? socialDetail.comments.map((e)=>{
             return(
             <span key={e.id}>
               <p>{e.author_username}</p>
               <p>{e.text}</p>
             </span>
-)          })} */}
+            )
+          }):<>loading</>}
         </div>
         <input
                   type="text"
