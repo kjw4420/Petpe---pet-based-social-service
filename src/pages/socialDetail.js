@@ -1,51 +1,50 @@
 import { MobileWrapper } from "./../components/globalComponent";
 import TopHeader from "../components/TopHeader";
-import { useParams, Link,useLocation ,useNavigate} from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, React } from "react";
 import axios from "../../node_modules/axios/index";
 import useAuth from "./../hooks/useAuth";
 
 axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const SocialDetail = () => {
   const { auth } = useAuth();
   const pk = useParams();
   const [socialDetail, setSocialDetail] = useState([]);
   const [socialComment, setSocialComment] = useState([]);
-  const [newComment,setNewComment]=useState();
+  const [newComment, setNewComment] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const deleteSocial=()=>{
+  const deleteSocial = () => {
     try {
       axios
-        .delete(`http://3.34.21.153/social/socialring/${pk.id}`
-        )
+        .delete(`http://3.34.21.153/social/socialring/${pk.id}`)
         .then((response) => {
           console.log(response.data);
-          navigate("/social",{ replace: true })
-        })
+          navigate("/social", { replace: true });
+        });
     } catch (err) {
       setIsLoading("err");
     }
   };
 
-
-
-  const handleSubmit=()=>{
+  const handleSubmit = () => {
     try {
       axios
-        .post(`http://3.34.21.153/social/comments`,{"text":newComment,"socialRing":pk.id}
-        // ,{
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Authorization: `Bearer ${auth.accessToken}`,
-        //   },
-        //   withCredentials: true,
-        //   "Access-Control-Allow-Credentials": "*",
-        // }
+        .post(
+          `http://3.34.21.153/social/comments`,
+          { text: newComment, socialRing: pk.id }
+          // ,{
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //     Authorization: `Bearer ${auth.accessToken}`,
+          //   },
+          //   withCredentials: true,
+          //   "Access-Control-Allow-Credentials": "*",
+          // }
         )
         .then((response) => {
           console.log(response.data);
@@ -55,7 +54,6 @@ const SocialDetail = () => {
     }
   };
 
-  
   const joinSocial = () => {
     try {
       axios
@@ -110,26 +108,34 @@ const SocialDetail = () => {
       <TopHeader type="2" name="소셜링" />
       <MobileWrapper>
         {pk.id === auth.pk ? <>수정버튼</> : null}
-        <h1 className="bold">타이틀 안날라옴</h1>
+        <p>{socialDetail.title}</p>
         <img src={socialDetail.image} alt={socialDetail.id + "의 대표이미지"} />
         <p>{`카테고리- ${socialDetail.category}`}</p>
         <p>{`타입- ${socialDetail.type}`}</p>
         <p>{`참여중인 인원- ${socialDetail.count} 최대 인원- ${socialDetail.maxpeople}`}</p>
-        <p className="bold">콘텐츠 안날라옴</p>
+        <p>{socialDetail.content}</p>
         <p>{`만나는날- ${socialDetail.meetdate}`}</p>
         <p>{`만나는시간- ${socialDetail.meettime}`}</p>
         <div onClick={joinSocial}>참여하기</div>
         <div onClick={deleteSocial}>소셜링삭제하기</div>
         <input
-                  type="text"
-                  className="mt-10 comment_input"
-                  placeholder="댓글을 입력하세요"
-                  onChange={(e)=>{
-                    setNewComment(e.target.value)
-                  }}
-                />
-                <button className={newComment?"comment_submit_button active":"comment_submit_button"}
-                onClick={handleSubmit}>제출</button>
+          type="text"
+          className="mt-10 comment_input"
+          placeholder="댓글을 입력하세요"
+          onChange={(e) => {
+            setNewComment(e.target.value);
+          }}
+        />
+        <button
+          className={
+            newComment
+              ? "comment_submit_button active"
+              : "comment_submit_button"
+          }
+          onClick={handleSubmit}
+        >
+          제출
+        </button>
       </MobileWrapper>
     </>
   );
