@@ -21,7 +21,7 @@ const Option = () => {
 
     try {
       await axios
-        .post("http://3.34.21.153/accounts/logout/", {
+        .post("/accounts/logout/", {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         })

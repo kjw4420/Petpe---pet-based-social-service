@@ -12,9 +12,7 @@ import ButtonLarge from "../components/globalComponent";
 import Register from "./register";
 
 import useAuth from "../hooks/useAuth";
-import axios from "../../node_modules/axios/index";
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-axios.defaults.xsrfCookieName = "csrftoken";
+import axios from "../api/axios";
 
 
 const Login = () => {
@@ -45,7 +43,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://3.34.21.153/accounts/login/",
+        "/accounts/login/",
         JSON.stringify({ username: "", email: user, password: pwd }),
         {
           headers: { "Content-Type": "application/json" },
@@ -58,7 +56,7 @@ const Login = () => {
       const userimage = response?.data?.user?.userimage;
       const pk = response?.data?.user?.pk
 
-      setAuth({ user: user, pwd: pwd, accessToken: accessToken, userimage:userimage, refreshToken:refreshToken, pk:pk });
+      setAuth({ user: user, accessToken: accessToken, userimage:userimage, refreshToken:refreshToken, pk:pk });
       setUser("");
       setPwd("");
       navigate(from, { replace: true });

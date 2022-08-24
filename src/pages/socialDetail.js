@@ -2,11 +2,8 @@ import { MobileWrapper } from "./../components/globalComponent";
 import TopHeader from "../components/TopHeader";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, React } from "react";
-import axios from "../../node_modules/axios/index";
+import axios from "../api/axios";
 import useAuth from "./../hooks/useAuth";
-
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const SocialDetail = () => {
   const { auth } = useAuth();
@@ -19,9 +16,10 @@ const SocialDetail = () => {
   const navigate = useNavigate();
 
   const deleteSocial = () => {
+    if(window.confirm("소셜링을 삭제하시겠습니까?")){
     try {
       axios
-        .delete(`http://3.34.21.153/social/socialring/${pk.id}`)
+        .delete(`/social/socialring/${pk.id}`)
         .then((response) => {
           console.log(response.data);
           navigate("/social", { replace: true });
@@ -29,13 +27,14 @@ const SocialDetail = () => {
     } catch (err) {
       setIsLoading("err");
     }
+  }
   };
 
   const handleSubmit = () => {
     try {
       axios
         .post(
-          `http://3.34.21.153/social/comments`,
+          `/social/comments`,
           { text: newComment, socialRing: pk.id }
           // ,{
           //   headers: {
@@ -57,7 +56,7 @@ const SocialDetail = () => {
   const joinSocial = () => {
     try {
       axios
-        .post(`http://3.34.21.153/social/${pk.id}join/`, {
+        .post(`/social/${pk.id}join/`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${auth.accessToken}`,
@@ -77,7 +76,7 @@ const SocialDetail = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`http://3.34.21.153/social/socialring/${pk.id}`)
+        .get(`/social/socialring/${pk.id}`)
         .then((response) => {
           setSocialDetail(response.data);
           console.log(response.data);
@@ -92,7 +91,7 @@ const SocialDetail = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`http://3.34.21.153/social/socialring/comments/${pk.id}`)
+        .get(`/social/socialring/comments/${pk.id}`)
         .then((response) => {
           setSocialComment(response.data);
           console.log(response.data);

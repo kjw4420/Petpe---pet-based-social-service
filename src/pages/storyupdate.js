@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useRef } from "react";
-import axios from "../../node_modules/axios/index";
+import axios from "../api/axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TopHeader from "./../components/TopHeader";
@@ -35,7 +35,7 @@ const NewStory = () => {
 
     const postSurvey = await axios({
       method: "POST",
-      url: "http://3.34.21.153/story/",
+      url: "/story/",
       mode: "cors",
       headers: {
         "Content-Type": "multipart/form-data",

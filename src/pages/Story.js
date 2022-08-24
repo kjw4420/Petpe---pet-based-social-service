@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./story.css";
 import { Route, Routes, Link,useLocation } from "react-router-dom";
-import axios from "../../node_modules/axios/index";
+import axios from "../api/axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,7 +29,7 @@ const Story = () => {
   useEffect(() => {
     setIsLoading(true);
     try {
-      axios.get("http://3.34.21.153/story").then((response) => {
+      axios.get("/story").then((response) => {
         setStory(response.data.results);
         console.log(response.data.results)
         setIsLoading(false);

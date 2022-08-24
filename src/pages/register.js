@@ -4,7 +4,7 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
-import axios from "../../node_modules/axios/index";
+import axios from "../api/axios";
 import "./Register.css";
 
 
@@ -40,7 +40,7 @@ const Register = () => {
     console.log({ username: userNickname, email: userEmail, password1: pword, password2: pword, userimage:null})
     try {
       await axios.post(
-        "http://3.34.21.153/accounts/registration/",
+        "/accounts/registration/",
         JSON.stringify({ username: userNickname, email: userEmail, password1: pword, password2: pword, userimage:null}),
         {
           headers: { "Content-Type": "application/json" },

@@ -13,10 +13,7 @@ import "./profile.css";
 import useAuth from "../hooks/useAuth";
 import TopHeader from "../components/TopHeader";
 import { MobileWrapper } from "../components/globalComponent";
-import axios from "../../node_modules/axios/index";
-
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "x-CSRFToken";
+import axios from "../api/axios";
 
 const Account = () => {
   const { auth } = useAuth();
@@ -28,7 +25,7 @@ const Account = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`http://3.34.21.153/accounts/user/${userPK["*"]}`, {
+        .get(`/accounts/user/${userPK["*"]}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${auth.accessToken}`,

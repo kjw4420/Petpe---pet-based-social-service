@@ -1,23 +1,25 @@
 import Slider from "react-slick";
 import { React, useEffect, useState } from "react";
-import axios from "../../node_modules/axios/index";
+import axios from "../api/axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TopHeader from "./../components/TopHeader";
 import MiniButton from './../components/minibutton';
+import useAuth from './../hooks/useAuth';
 
 const StoryDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [story, setStory] = useState([]);
   const [comment,setComment]=useState()
   const userkey = useParams();
+  const {auth} = useAuth()
 
   const handleSubmit=()=>{
     if(story!==undefined)
-    axios.post(`http://3.34.21.153/comments/`,
+    axios.post(`/comments`,
     {
       headers: { "Content-Type": "application/json" },
-      body:{ "text": String(comment), "story": Number(userkey.id) },
+      body:{ "text": comment, "story": userkey.id },
       withCredentials: true
     }
     )
@@ -29,7 +31,7 @@ const StoryDetail = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`http://3.34.21.153/story/${userkey.id}`).then((response) => {
+    axios.get(`/story/${userkey.id}`).then((response) => {
       setStory(response.data);
       console.log(response.data)
       setIsLoading(false);
@@ -118,6 +120,7 @@ const StoryDetail = () => {
                           {e.author_username}
                         </span>
                         <span className="storyContent p">{e.text}</span>
+                        {e.author_useremail===auth.user?<RemoveBtn url={e.id}></RemoveBtn>:null}
                       </div>
                     );
                   })}
@@ -145,5 +148,18 @@ const StoryDetail = () => {
       </>
     );
 };
+
+const RemoveBtn =(url)=>{
+  
+  return(
+<span className="deleteBtn"
+onClick={()=>{
+  console.log(url)
+  if(window.confirm("댓글을 삭제하시겠습니까?")){
+    axios.delete(`/comments/${url.url}/`)
+  }
+  
+}}>삭제</span>)
+}
 
 export default StoryDetail;
