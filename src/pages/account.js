@@ -28,7 +28,7 @@ const Account = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`http://3.39.181.250/accounts/user/${userPK["*"]}`, {
+        .get(`http://3.34.21.153/accounts/user/${userPK["*"]}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${auth.accessToken}`,

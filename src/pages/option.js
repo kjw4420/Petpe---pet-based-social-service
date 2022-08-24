@@ -21,7 +21,7 @@ const Option = () => {
 
     try {
       await axios
-        .post("http://3.39.181.250/accounts/logout/", {
+        .post("http://3.34.21.153/accounts/logout/", {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         })
@@ -74,22 +74,57 @@ const Option = () => {
             <div className="profileEditor">
               <img
                 src="../img/profile_icon.png"
+                width="25px"
                 alt="프로필편집"
                 className="option_list_icon"
               ></img>
               프로필편집
             </div>
           </Link>
-
+          <div className="cs">
+            <img
+              src="../img/account.png"
+              width="25px"
+              height="25px"
+              alt="프로필편집"
+              className="option_list_icon"
+            ></img>
+            계정
+          </div>
+          <div className="cs">
+            <img
+              src="../img/lock.png"
+              width="25px"
+              height="25px"
+              alt="프로필편집"
+              className="option_list_icon"
+            ></img>
+            개인정보 보호
+          </div>
+          <div className="cs">
+            <img
+              src="../img/alert-circle.png"
+              width="25px"
+              height="25px"
+              alt="프로필편집"
+              className="option_list_icon"
+            ></img>
+            알림 설정
+          </div>
           <div className="cs">
             <img
               src="../img/question-circle.png"
-              width="24px"
+              width="25px"
+              height="25px"
               alt="프로필편집"
               className="option_list_icon"
             ></img>
             고객센터 / 도움말
           </div>
+          
+
+
+
           <div className="logout" onClick={handleLogOut}>
             <img
               src="../img/logout.png"
@@ -99,6 +134,7 @@ const Option = () => {
             ></img>
             로그아웃
           </div>
+      
         </div>
       </div>
     </>
