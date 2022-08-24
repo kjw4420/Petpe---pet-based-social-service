@@ -7,35 +7,43 @@ import MiniButton from "./../components/minibutton";
 import { MobileWrapper } from "./../components/globalComponent";
 import useAuth from "./../hooks/useAuth";
 
-
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'x-CSRFToken';
 
 const NewStory = () => {
-  const [Picture, setPicture] = useState();
-  const [title, setTitle] = useState();
-  const [contents, setContents] = useState();
-  const { auth } = useAuth();
 
-  const handleSubmit = (e) => {
+  const [contents, setContents]=useState();
+  const [picture, setPicture]=useState();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", "");
-    formData.append("contents", contents);
-    formData.append("picture", Picture);
+    e.persist();
 
-    console.log(formData);
+    let files = e.target.profile_files.files;
+    let formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i]);
+    }
 
-    axios
-      .post("http://3.34.21.153/story/", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${auth.accessToken}`,
-        },
-        withCredentials: true,
-        "Access-Control-Allow-Credentials": "*",
-      })
-      .then((response) => {
-        console.log(response);
-      });
+    let dataSet = {
+      title: "",
+      contents: contents,
+      picture: picture,
+    };
+
+    formData.append("data", JSON.stringify(dataSet));
+
+    const postSurvey = await axios({
+      method: "POST",
+      url: "http://3.34.21.153/story/",
+      mode: "cors",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+
+    console.log(postSurvey);
   };
 
   return (
@@ -54,7 +62,7 @@ const NewStory = () => {
           />
           <input type="file" onChange={(e) => setPicture(e.target.files)} />
 
-          <MiniButton onClick={handleSubmit}>제출</MiniButton>
+          <MiniButton>제출</MiniButton>
         </form>
       </MobileWrapper>
     </>
