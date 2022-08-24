@@ -12,6 +12,10 @@
 ## :hammer_and_wrench: 사용 기술
 ### Front-end
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white"/>
+react-router
+styled-component
+yarn
+axios
 
 ### back-end
 <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/>
