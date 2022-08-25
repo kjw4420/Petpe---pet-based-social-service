@@ -42,6 +42,9 @@
 모듈<br>
 <img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white"/>
 <br>
+배포<br>
+<img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/>
+<br>
 ## User Flow
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdjmPlG%2FbtrKAiu89JL%2FgMnmK4aeMi4t96NVZhCpCk%2Fimg.png"/>
 
