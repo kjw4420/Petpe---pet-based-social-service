@@ -10,11 +10,11 @@
 
 ## :family_man_woman_girl_boy: 멤버
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpeXGs%2FbtrKvE5WIJy%2FHoueZwjqAbCTNoF9FLkbN1%2Fimg.png"><br>
-### Front-end
+### Front-end ###
 | 이준구 | 장수영 | 박상훈 |
-### back-end
+### back-end ###
 | 김훈섭 | 김지원 | 김경준 | 김기찬 | 심용훈 |
-### PM
+### PM ###
 | 이은상 |
 ## :hammer_and_wrench: 사용 기술
 ### Front-end
