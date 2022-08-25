@@ -38,9 +38,8 @@
 언어<br>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/><br>
 프레임워크/라이브러리<br>
-<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/><br>
-모듈<br>
-<img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white"/>
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/> 
+<img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white"/><br>
 <br>
 배포<br>
 <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/>
