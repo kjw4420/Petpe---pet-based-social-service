@@ -26,5 +26,7 @@ axios
 
 ### back-end
 <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/>
+
+## User Flow
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdjmPlG%2FbtrKAiu89JL%2FgMnmK4aeMi4t96NVZhCpCk%2Fimg.png"/>
 
