@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import MiniButton from "../components/minibutton";
 import "./Place.css";
 import TopHeader from "../components/TopHeader";
-import { RadioNavigater } from "../components/globalComponent";
+import { RadioNavigater,MiniButton } from "../components/globalComponent";
 
 
 const Place = () => {

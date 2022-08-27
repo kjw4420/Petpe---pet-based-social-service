@@ -3,8 +3,7 @@ import axios from "../api/axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TopHeader from "./../components/TopHeader";
-import MiniButton from "./../components/minibutton";
-import { MobileWrapper } from "./../components/globalComponent";
+import { MobileWrapper,MiniButton } from "./../components/globalComponent";
 import useAuth from "./../hooks/useAuth";
 
 axios.defaults.xsrfCookieName = 'csrftoken';

@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./socialing.css";
-import MiniButton from "../components/minibutton";
 import { Routes, Route, Link,useParams } from "react-router-dom";
 import { PaddingWrap } from "./../components/container";
 
@@ -9,6 +8,7 @@ import ButtonLarge, {
   RadioNavigater,
   SocialSkeleton,
   StyledInput,
+  MiniButton
 } from "../components/globalComponent";
 
 import TopHeader from "../components/TopHeader";

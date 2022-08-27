@@ -4,7 +4,6 @@ import axios from "../api/axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TopHeader from "./../components/TopHeader";
-import MiniButton from './../components/minibutton';
 import useAuth from './../hooks/useAuth';
 
 const StoryDetail = () => {

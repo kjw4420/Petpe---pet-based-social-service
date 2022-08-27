@@ -76,7 +76,7 @@ const SocialDetail = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`/social/socialring/${pk.id}`)
+        .get(`/social/socialring/${pk.id}/`)
         .then((response) => {
           setSocialDetail(response.data);
           console.log(response.data);
@@ -91,7 +91,7 @@ const SocialDetail = () => {
     setIsLoading(true);
     try {
       axios
-        .get(`/social/socialring/comments/${pk.id}`)
+        .get(`/social/socialring/comments/${pk.id}/`)
         .then((response) => {
           setSocialComment(response.data);
           console.log(response.data);

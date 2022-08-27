@@ -1,23 +1,9 @@
 import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import TopHeader from "./TopHeader";
+import { FullPageWrapper } from "./container";
 
 // 최상단 헤더
-export const Header = () => {
-  return (
-    <div className="header">
-      <div className="social_header">
-        <div className="social_title_back">
-          <img src="../img/back.png" alt="뒤로가기"></img>
-        </div>
-        <span className="social_title h3 bold">소셜링</span>
-        <div className="social_title_add">
-          <img src="../img/plus.png" alt="소셜링 열기"></img>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // ===========라디오버튼 네비게이터
 export const RadioNavigater = () => {
@@ -96,6 +82,25 @@ export const ButtonMedium = styled.div`
   }
 `;
 
+export const MiniButton = styled.div`
+  border-radius: 15px;
+  background-color: var(--background-white);
+  color: var(--font-gray);
+  padding: 0 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid var(--font-gray);
+  float: left;
+  margin-right: 5px;
+
+  &.active {
+    color: var(--background-white);
+    background-color: var(--main-deep-brown);
+    border: none;
+    padding: 0 11px;
+  }
+`;
+
 export const StyledInput = styled.input`
   border-bottom: 1px solid var(--font-black);
   width: 100%;
@@ -104,24 +109,23 @@ export const StyledInput = styled.input`
 // 존재하지 않는 페이지 (에러페이지)
 export const WrongPage = () => {
   return (
-    <WrongPageWrapper>
-      <TopHeader type="1"></TopHeader>
-      <Link to="/">홈으로 가기</Link>
-    </WrongPageWrapper>
+    <FullPageWrapper>
+      <Link to="/">
+        <TopHeader type="1" />
+      </Link>
+      <MobileWrapper>
+        <span className="bold h4">죄송합니다. 요청하신 페이지를 찾을 수 없습니다.</span>
+        <br/><br/>
+        <span>
+          방문하시려는 페이지의 주소가 잘못 입력되었거나, 페이지의 주소가 변경
+          혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다. 입력하신 주소가
+          정확한지 다시 한번 확인해 주시기 바랍니다.
+        </span>
+
+      </MobileWrapper>
+    </FullPageWrapper>
   );
 };
-
-export const WrongPageWrapper = styled.section`
-  margin: 0 auto;
-  min-width: 330px;
-  max-width: 440px;
-  width: 50%;
-  padding: 20px;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
 
 const SkeletonImg = styled.div`
   width: 100%;
