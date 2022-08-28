@@ -38,7 +38,7 @@ const Socialing = () => {
   if (isLoading) {
     return (
       <>
-        <TopHeader type="3" name="소셜링" URL="/social/newsocial" />
+        <TopHeader type="3" name="소셜링" URL="/social/newsocial" callBackImg="plus" />
         <RadioNavigater />
       </>
     );

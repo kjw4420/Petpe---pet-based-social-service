@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../img/logo.png";
 import back from "../img/back.png";
-import setting from "../img/setting.png";
 import AuthContext from "../context/AuthProvider";
-import plus from "../img/plus.png";
-import profile from "../img/profile.png";
 
 const HeaderBarUnderLine = styled.header`
   width: 100%;
@@ -75,6 +72,8 @@ const UserProfile = styled.img`
 `
 
 // 타입에는 헤더갯수에 따라 1,2,3 이 있음 / name 은 상단에 표시되는이름 / callback은 우측 아이콘 클릭시 동작
+
+
 const TopHeader = ({
   type,
   name,
@@ -119,7 +118,7 @@ const TopHeader = ({
               {callBackType === "text" ? (
                 <IconImg as="div">{callBackText}</IconImg>
               ) : (
-                <IconImg src={callBackImg} alt="새 글쓰기" />
+                <IconImg src={`../../img/${callBackImg}.png`} alt="새 글쓰기" />
               )}
             </IconWrapper>
           </Link>
