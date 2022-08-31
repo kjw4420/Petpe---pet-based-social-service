@@ -60,27 +60,31 @@
 
 ### Front-end
 
-언어<br>
+**프로그래밍 언어**<br>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=white"/>
 <br>
-프레임워크/라이브러리<br>
+**프레임워크/라이브러리**<br>
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/><br>
-스타일링<br>
+**스타일링**<br>
 <img src="https://img.shields.io/badge/styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/><br>
-라우팅<br>
+**라우팅**<br>
 <img src="https://img.shields.io/badge/React_router-CA4245?style=flat-square&logo=react-router&logoColor=white"/><br>
-패키지 매니저<br>
+**상태관리**<br>
+React Hooks (useContext)<br>
+**패키지 매니저**<br>
 <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=flat-square&logo=Yarn&logoColor=white"/><br>
 <br>
 
 ### Back-end
 
-언어<br>
+**언어**<br>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/><br>
-프레임워크/라이브러리<br>
-<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/>
-<img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white"/><br>
-배포<br>
+**프레임워크/라이브러리**<br>
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white"/> <img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white"/><br>
+
+**데이터베이스**<br>
+<img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"/><br>
+**배포 및 관리**<br>
 <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/>
 <br>
 
