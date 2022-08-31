@@ -20,11 +20,15 @@
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoFUEp%2FbtrKuwOB2gQ%2F6CAVkIHoOX7KgSxLkyEKAk%2Fimg.png"><br>
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpgLEe%2FbtrKuwgIUGG%2FIIGI3D9jWYvwY2Fmzyvja1%2Fimg.png"><br>
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPqSxH%2FbtrKwGWvEeV%2FY0m79NMAguOyG1fGHQN871%2Fimg.png"><br>
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCGqrZ%2FbtrKwhvQpoj%2FauZRHKW65x2fbjaR9Mk4Kk%2Fimg.png"><br>
+
+<!-- <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCGqrZ%2FbtrKwhvQpoj%2FauZRHKW65x2fbjaR9Mk4Kk%2Fimg.png"><br> -->
+
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FboS7R1%2FbtrKwin1oLB%2FZyOsWA9KoXXKGK7bPk8sn1%2Fimg.png"><br>
 
 반려동물 기반 SNS 오로펫은 한서대학교 학생들의 사이드프로젝트에서 시작됬습니다.
-반려동물의
+반려동물 인구가 증가함에 따라, 관련 산업도 많이 발전하였고 **반려동물의 사회성 부족**으로 인한 많은 **사회문제**들 역시 야기되었습니다. 이러한 문제의 원인은 반려동물이 자라는 환경속에서 다른 반려동물을 만날 기회가 적고, 가족이 아닌 **타인을 만날 기회의 부족**으로 보고, 반려동물을 위한 소셜링(사회활동) 서비스를 기획하게 되었습니다.
+
+저희의 서비스는 반려동물을 동반한 <u>각종 모임에 참여/개최</u> 할 수 있는 **소셜링**<br> <u>반려동물의 일상을 공유</u>할 수 있는 **스토리**<br> 반려동물을 동반할 수 있거나 <u>반려동물과 관련된 장소의 정보</u>를 알 수 있는 **플레이스**<br> 반려동물 관련 <u>고민/정보 를 나눌 수 있는</u> **반려톡톡**으로 구성되어있습니다<br><br>
 
 ## :family_man_woman_girl_boy: 멤버
 
@@ -40,20 +44,22 @@
 
 ### back-end
 
-|        | github |
-| ------ | ------ |
-| **김훈섭** 🥇|https://github.com/khsrla9806|
-| 김지원 |https://github.com/kjw4420|
-| 김경준 |https://github.com/kkzoone|
-| 김기찬 |https://github.com/kichan12|
-| 심용훈 |https://github.com/yonghoon98|
+|               | github                        |
+| ------------- | ----------------------------- |
+| **김훈섭** 🥇 | https://github.com/khsrla9806 |
+| 김지원        | https://github.com/kjw4420    |
+| 김경준        | https://github.com/kkzoone    |
+| 김기찬        | https://github.com/kichan12   |
+| 심용훈        | https://github.com/yonghoon98 |
 
 ### PM
-|        | github |
-| ------ | ------ |
-| 이은상 |https://github.com/eunxang|
+
+|        | github                     |
+| ------ | -------------------------- |
+| 이은상 | https://github.com/eunxang |
 
 ### 디자인
+
 이준구
 
 ## :hammer_and_wrench: 사용 기술
